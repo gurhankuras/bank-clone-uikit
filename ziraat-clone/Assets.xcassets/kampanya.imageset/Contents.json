@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "50TL_Bankkart_Lira_Detay-aa761433-58b3-42fd-af3f-63bad5e7d866.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2222F45328AF909300C1CEBD /* ziraat_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45228AF909300C1CEBD /* ziraat_cloneTests.swift */; };
+		2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */; };
+		2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */; };
+		2222F46228AF9AE800C1CEBD /* AccountHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F46128AF9AE800C1CEBD /* AccountHolder.swift */; };
+		2222F46428AF9E2E00C1CEBD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F46328AF9E2E00C1CEBD /* LoginViewModel.swift */; };
+		2222F46628AFB53400C1CEBD /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F46528AFB53400C1CEBD /* LoginViewModelTests.swift */; };
+		224A4B9C2892E0AE00FB4DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4B9B2892E0AE00FB4DDB /* AppDelegate.swift */; };
+		224A4B9E2892E0AE00FB4DDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4B9D2892E0AE00FB4DDB /* SceneDelegate.swift */; };
+		224A4BA02892E0AE00FB4DDB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4B9F2892E0AE00FB4DDB /* LandingViewController.swift */; };
+		224A4BA52892E0AF00FB4DDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224A4BA42892E0AF00FB4DDB /* Assets.xcassets */; };
+		224A4BA82892E0AF00FB4DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224A4BA62892E0AF00FB4DDB /* LaunchScreen.storyboard */; };
+		224A4BB22892E3D700FB4DDB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 224A4BB12892E3D700FB4DDB /* SnapKit */; };
+		224A4BB5289319C800FB4DDB /* UserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB4289319C800FB4DDB /* UserAvatar.swift */; };
+		224A4BB728931A1400FB4DDB /* HalfSizePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB628931A1400FB4DDB /* HalfSizePresentationController.swift */; };
+		224A4BB928931E5C00FB4DDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB828931E5C00FB4DDB /* LoginViewController.swift */; };
+		224A4BBB28933AA700FB4DDB /* LoginWelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBA28933AA700FB4DDB /* LoginWelcomeMessageView.swift */; };
+		224A4BBD2893430E00FB4DDB /* LoginSheetCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBC2893430E00FB4DDB /* LoginSheetCloseButton.swift */; };
+		224A4BC02893D06700FB4DDB /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBF2893D06700FB4DDB /* HomePageViewController.swift */; };
+		224A4BC22893DB6100FB4DDB /* MoveUpPageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC12893DB6100FB4DDB /* MoveUpPageTransition.swift */; };
+		224A4BC42893FBA900FB4DDB /* Campaigns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC32893FBA900FB4DDB /* Campaigns.swift */; };
+		224A4BC628945D0400FB4DDB /* UIViewController+addChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC528945D0400FB4DDB /* UIViewController+addChildView.swift */; };
+		224A4BC92895703200FB4DDB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC82895703200FB4DDB /* AccountsViewController.swift */; };
+		224A4BCB2895B9F700FB4DDB /* AccountHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BCA2895B9F700FB4DDB /* AccountHead.swift */; };
+		224A4BCE2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BCD2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift */; };
+		224EA7A628B2E5130028A91B /* MainFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7A528B2E5130028A91B /* MainFlowTests.swift */; };
+		224EA7A928B2EB9D0028A91B /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7A828B2EB9D0028A91B /* MainFlow.swift */; };
+		224EA7AC28B2EBC30028A91B /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AB28B2EBC30028A91B /* Factory.swift */; };
+		224EA7AE28B2EF780028A91B /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AD28B2EF780028A91B /* FactoryTests.swift */; };
+		224EA7B028B56E2E0028A91B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AF28B56E2E0028A91B /* LoginButton.swift */; };
+		224EA7B428B5711A0028A91B /* LoginButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B328B5711A0028A91B /* LoginButtonTests.swift */; };
+		224EA7B628B63A5C0028A91B /* MyAssetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B528B63A5C0028A91B /* MyAssetsViewController.swift */; };
+		224EA7B828B641710028A91B /* UIColor+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B728B641710028A91B /* UIColor+Color.swift */; };
+		224EA7BA28B666F50028A91B /* AssetsCircularChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B928B666F50028A91B /* AssetsCircularChart.swift */; };
+		2275B2052897219600BAD58E /* NSDirectionalEdgeInsets+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275B2042897219600BAD58E /* NSDirectionalEdgeInsets+init.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2222F45428AF909300C1CEBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 224A4B902892E0AE00FB4DDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 224A4B972892E0AE00FB4DDB;
+			remoteInfo = "ziraat-clone";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2222F45028AF909300C1CEBD /* ziraat-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ziraat-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2222F45228AF909300C1CEBD /* ziraat_cloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ziraat_cloneTests.swift; sourceTree = "<group>"; };
+		2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControllerTests.swift; sourceTree = "<group>"; };
+		2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetTransitionDelegate.swift; sourceTree = "<group>"; };
+		2222F46128AF9AE800C1CEBD /* AccountHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHolder.swift; sourceTree = "<group>"; };
+		2222F46328AF9E2E00C1CEBD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2222F46528AFB53400C1CEBD /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		224A4B982892E0AE00FB4DDB /* ziraat-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ziraat-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		224A4B9B2892E0AE00FB4DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		224A4B9D2892E0AE00FB4DDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		224A4B9F2892E0AE00FB4DDB /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		224A4BA42892E0AF00FB4DDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		224A4BA72892E0AF00FB4DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		224A4BA92892E0AF00FB4DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		224A4BB4289319C800FB4DDB /* UserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatar.swift; sourceTree = "<group>"; };
+		224A4BB628931A1400FB4DDB /* HalfSizePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSizePresentationController.swift; sourceTree = "<group>"; };
+		224A4BB828931E5C00FB4DDB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		224A4BBA28933AA700FB4DDB /* LoginWelcomeMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeMessageView.swift; sourceTree = "<group>"; };
+		224A4BBC2893430E00FB4DDB /* LoginSheetCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetCloseButton.swift; sourceTree = "<group>"; };
+		224A4BBF2893D06700FB4DDB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		224A4BC12893DB6100FB4DDB /* MoveUpPageTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveUpPageTransition.swift; sourceTree = "<group>"; };
+		224A4BC32893FBA900FB4DDB /* Campaigns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaigns.swift; sourceTree = "<group>"; };
+		224A4BC528945D0400FB4DDB /* UIViewController+addChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addChildView.swift"; sourceTree = "<group>"; };
+		224A4BC82895703200FB4DDB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		224A4BCA2895B9F700FB4DDB /* AccountHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHead.swift; sourceTree = "<group>"; };
+		224A4BCD2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+doesNotWantToGrow+doesNotWantToShrink.swift"; sourceTree = "<group>"; };
+		224EA7A528B2E5130028A91B /* MainFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowTests.swift; sourceTree = "<group>"; };
+		224EA7A828B2EB9D0028A91B /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
+		224EA7AB28B2EBC30028A91B /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		224EA7AD28B2EF780028A91B /* FactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTests.swift; sourceTree = "<group>"; };
+		224EA7AF28B56E2E0028A91B /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		224EA7B328B5711A0028A91B /* LoginButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonTests.swift; sourceTree = "<group>"; };
+		224EA7B528B63A5C0028A91B /* MyAssetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAssetsViewController.swift; sourceTree = "<group>"; };
+		224EA7B728B641710028A91B /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
+		224EA7B928B666F50028A91B /* AssetsCircularChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCircularChart.swift; sourceTree = "<group>"; };
+		2275B2042897219600BAD58E /* NSDirectionalEdgeInsets+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+init.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2222F44D28AF909300C1CEBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224A4B952892E0AE00FB4DDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224A4BB22892E3D700FB4DDB /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2222F45128AF909300C1CEBD /* ziraat-cloneTests */ = {
+			isa = PBXGroup;
+			children = (
+				2222F45B28AF930E00C1CEBD /* ui */,
+				2222F45228AF909300C1CEBD /* ziraat_cloneTests.swift */,
+				2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */,
+				2222F46528AFB53400C1CEBD /* LoginViewModelTests.swift */,
+				224EA7A528B2E5130028A91B /* MainFlowTests.swift */,
+				224EA7AD28B2EF780028A91B /* FactoryTests.swift */,
+				224EA7B328B5711A0028A91B /* LoginButtonTests.swift */,
+			);
+			path = "ziraat-cloneTests";
+			sourceTree = "<group>";
+		};
+		2222F45B28AF930E00C1CEBD /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		2222F45F28AF99CD00C1CEBD /* Campaigns */ = {
+			isa = PBXGroup;
+			children = (
+				224A4BC32893FBA900FB4DDB /* Campaigns.swift */,
+			);
+			path = Campaigns;
+			sourceTree = "<group>";
+		};
+		2222F46028AF99D400C1CEBD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */,
+				224A4BB828931E5C00FB4DDB /* LoginViewController.swift */,
+				224A4BBC2893430E00FB4DDB /* LoginSheetCloseButton.swift */,
+				2222F46328AF9E2E00C1CEBD /* LoginViewModel.swift */,
+				224EA7AF28B56E2E0028A91B /* LoginButton.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		224A4B8F2892E0AE00FB4DDB = {
+			isa = PBXGroup;
+			children = (
+				224A4B9A2892E0AE00FB4DDB /* ziraat-clone */,
+				2222F45128AF909300C1CEBD /* ziraat-cloneTests */,
+				224A4B992892E0AE00FB4DDB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		224A4B992892E0AE00FB4DDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				224A4B982892E0AE00FB4DDB /* ziraat-clone.app */,
+				2222F45028AF909300C1CEBD /* ziraat-cloneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		224A4B9A2892E0AE00FB4DDB /* ziraat-clone */ = {
+			isa = PBXGroup;
+			children = (
+				224EA7AA28B2EBB40028A91B /* Factory */,
+				224EA7A728B2EB8D0028A91B /* Flow */,
+				224A4BCC2895C93F00FB4DDB /* Utils */,
+				224A4BC72895702000FB4DDB /* Accounts */,
+				224A4BBE2893D05700FB4DDB /* Home */,
+				224A4BB3289319B900FB4DDB /* Landing */,
+				224A4B9B2892E0AE00FB4DDB /* AppDelegate.swift */,
+				224A4B9D2892E0AE00FB4DDB /* SceneDelegate.swift */,
+				224A4BA42892E0AF00FB4DDB /* Assets.xcassets */,
+				224A4BA62892E0AF00FB4DDB /* LaunchScreen.storyboard */,
+				224A4BA92892E0AF00FB4DDB /* Info.plist */,
+				224A4BC528945D0400FB4DDB /* UIViewController+addChildView.swift */,
+				2222F46128AF9AE800C1CEBD /* AccountHolder.swift */,
+				224EA7B728B641710028A91B /* UIColor+Color.swift */,
+			);
+			path = "ziraat-clone";
+			sourceTree = "<group>";
+		};
+		224A4BB3289319B900FB4DDB /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				224A4BBA28933AA700FB4DDB /* LoginWelcomeMessageView.swift */,
+				2222F46028AF99D400C1CEBD /* Login */,
+				2222F45F28AF99CD00C1CEBD /* Campaigns */,
+				224A4B9F2892E0AE00FB4DDB /* LandingViewController.swift */,
+				224A4BB4289319C800FB4DDB /* UserAvatar.swift */,
+				224A4BB628931A1400FB4DDB /* HalfSizePresentationController.swift */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		224A4BBE2893D05700FB4DDB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				224A4BBF2893D06700FB4DDB /* HomePageViewController.swift */,
+				224A4BC12893DB6100FB4DDB /* MoveUpPageTransition.swift */,
+				224EA7B528B63A5C0028A91B /* MyAssetsViewController.swift */,
+				224EA7B928B666F50028A91B /* AssetsCircularChart.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		224A4BC72895702000FB4DDB /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				224A4BC82895703200FB4DDB /* AccountsViewController.swift */,
+				224A4BCA2895B9F700FB4DDB /* AccountHead.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		224A4BCC2895C93F00FB4DDB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				224A4BCD2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift */,
+				2275B2042897219600BAD58E /* NSDirectionalEdgeInsets+init.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		224EA7A728B2EB8D0028A91B /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				224EA7A828B2EB9D0028A91B /* MainFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		224EA7AA28B2EBB40028A91B /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				224EA7AB28B2EBC30028A91B /* Factory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2222F44F28AF909300C1CEBD /* ziraat-cloneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2222F45828AF909300C1CEBD /* Build configuration list for PBXNativeTarget "ziraat-cloneTests" */;
+			buildPhases = (
+				2222F44C28AF909300C1CEBD /* Sources */,
+				2222F44D28AF909300C1CEBD /* Frameworks */,
+				2222F44E28AF909300C1CEBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2222F45528AF909300C1CEBD /* PBXTargetDependency */,
+			);
+			name = "ziraat-cloneTests";
+			productName = "ziraat-cloneTests";
+			productReference = 2222F45028AF909300C1CEBD /* ziraat-cloneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		224A4B972892E0AE00FB4DDB /* ziraat-clone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 224A4BAC2892E0AF00FB4DDB /* Build configuration list for PBXNativeTarget "ziraat-clone" */;
+			buildPhases = (
+				224A4B942892E0AE00FB4DDB /* Sources */,
+				224A4B952892E0AE00FB4DDB /* Frameworks */,
+				224A4B962892E0AE00FB4DDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ziraat-clone";
+			packageProductDependencies = (
+				224A4BB12892E3D700FB4DDB /* SnapKit */,
+			);
+			productName = "ziraat-clone";
+			productReference = 224A4B982892E0AE00FB4DDB /* ziraat-clone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		224A4B902892E0AE00FB4DDB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					2222F44F28AF909300C1CEBD = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 224A4B972892E0AE00FB4DDB;
+					};
+					224A4B972892E0AE00FB4DDB = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 224A4B932892E0AE00FB4DDB /* Build configuration list for PBXProject "ziraat-clone" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 224A4B8F2892E0AE00FB4DDB;
+			packageReferences = (
+				224A4BB02892E3D700FB4DDB /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = 224A4B992892E0AE00FB4DDB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				224A4B972892E0AE00FB4DDB /* ziraat-clone */,
+				2222F44F28AF909300C1CEBD /* ziraat-cloneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2222F44E28AF909300C1CEBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224A4B962892E0AE00FB4DDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224A4BA82892E0AF00FB4DDB /* LaunchScreen.storyboard in Resources */,
+				224A4BA52892E0AF00FB4DDB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2222F44C28AF909300C1CEBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2222F46628AFB53400C1CEBD /* LoginViewModelTests.swift in Sources */,
+				224EA7AE28B2EF780028A91B /* FactoryTests.swift in Sources */,
+				2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */,
+				224EA7A628B2E5130028A91B /* MainFlowTests.swift in Sources */,
+				2222F45328AF909300C1CEBD /* ziraat_cloneTests.swift in Sources */,
+				224EA7B428B5711A0028A91B /* LoginButtonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		224A4B942892E0AE00FB4DDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224A4BB928931E5C00FB4DDB /* LoginViewController.swift in Sources */,
+				224A4BB5289319C800FB4DDB /* UserAvatar.swift in Sources */,
+				224EA7A928B2EB9D0028A91B /* MainFlow.swift in Sources */,
+				224A4BA02892E0AE00FB4DDB /* LandingViewController.swift in Sources */,
+				224A4BC42893FBA900FB4DDB /* Campaigns.swift in Sources */,
+				224A4BBB28933AA700FB4DDB /* LoginWelcomeMessageView.swift in Sources */,
+				224A4BCB2895B9F700FB4DDB /* AccountHead.swift in Sources */,
+				224A4BBD2893430E00FB4DDB /* LoginSheetCloseButton.swift in Sources */,
+				2222F46228AF9AE800C1CEBD /* AccountHolder.swift in Sources */,
+				224A4BC628945D0400FB4DDB /* UIViewController+addChildView.swift in Sources */,
+				224EA7B628B63A5C0028A91B /* MyAssetsViewController.swift in Sources */,
+				224A4BC02893D06700FB4DDB /* HomePageViewController.swift in Sources */,
+				224EA7B028B56E2E0028A91B /* LoginButton.swift in Sources */,
+				2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */,
+				224A4BC92895703200FB4DDB /* AccountsViewController.swift in Sources */,
+				224A4BB728931A1400FB4DDB /* HalfSizePresentationController.swift in Sources */,
+				224EA7BA28B666F50028A91B /* AssetsCircularChart.swift in Sources */,
+				224A4BCE2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift in Sources */,
+				224A4BC22893DB6100FB4DDB /* MoveUpPageTransition.swift in Sources */,
+				224A4B9C2892E0AE00FB4DDB /* AppDelegate.swift in Sources */,
+				2275B2052897219600BAD58E /* NSDirectionalEdgeInsets+init.swift in Sources */,
+				2222F46428AF9E2E00C1CEBD /* LoginViewModel.swift in Sources */,
+				224EA7B828B641710028A91B /* UIColor+Color.swift in Sources */,
+				224A4B9E2892E0AE00FB4DDB /* SceneDelegate.swift in Sources */,
+				224EA7AC28B2EBC30028A91B /* Factory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2222F45528AF909300C1CEBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 224A4B972892E0AE00FB4DDB /* ziraat-clone */;
+			targetProxy = 2222F45428AF909300C1CEBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		224A4BA62892E0AF00FB4DDB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				224A4BA72892E0AF00FB4DDB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2222F45628AF909300C1CEBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gurhankuras.ziraat-cloneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ziraat-clone.app/ziraat-clone";
+			};
+			name = Debug;
+		};
+		2222F45728AF909300C1CEBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gurhankuras.ziraat-cloneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ziraat-clone.app/ziraat-clone";
+			};
+			name = Release;
+		};
+		224A4BAA2892E0AF00FB4DDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		224A4BAB2892E0AF00FB4DDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		224A4BAD2892E0AF00FB4DDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PG5DH5Q24R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ziraat-clone/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gurhankuras.ziraat-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		224A4BAE2892E0AF00FB4DDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PG5DH5Q24R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ziraat-clone/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "gurhankuras.ziraat-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2222F45828AF909300C1CEBD /* Build configuration list for PBXNativeTarget "ziraat-cloneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2222F45628AF909300C1CEBD /* Debug */,
+				2222F45728AF909300C1CEBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		224A4B932892E0AE00FB4DDB /* Build configuration list for PBXProject "ziraat-clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224A4BAA2892E0AF00FB4DDB /* Debug */,
+				224A4BAB2892E0AF00FB4DDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		224A4BAC2892E0AF00FB4DDB /* Build configuration list for PBXNativeTarget "ziraat-clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				224A4BAD2892E0AF00FB4DDB /* Debug */,
+				224A4BAE2892E0AF00FB4DDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		224A4BB02892E3D700FB4DDB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		224A4BB12892E3D700FB4DDB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 224A4BB02892E3D700FB4DDB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 224A4B902892E0AE00FB4DDB /* Project object */;
+}
