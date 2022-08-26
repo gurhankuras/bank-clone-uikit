@@ -10,7 +10,7 @@ import XCTest
 
 class LoginButtonTests: XCTestCase {
     func test_setBackgroundColor_correctlySetsColorForEnabledState() throws {
-        let sut = LoginButton()
+        let sut = UIButtonExtended()
         let color: UIColor = .red
         sut.setBackgroundColor(color, for: .enabled)
         
@@ -18,7 +18,7 @@ class LoginButtonTests: XCTestCase {
     }
     
     func test_setBackgroundColor_correctlySetsColorForDisabledState() throws {
-        let sut = LoginButton()
+        let sut = UIButtonExtended()
         let color: UIColor = .red
         sut.setBackgroundColor(color, for: .disabled)
         
@@ -26,7 +26,7 @@ class LoginButtonTests: XCTestCase {
     }
     
     func test_setsBackgroundColorToEnabledColor_WhenSetEnabledToTrue() throws {
-        let sut = LoginButton()
+        let sut = UIButtonExtended()
         let color: UIColor = .green
         sut.setBackgroundColor(color, for: .enabled)
         
@@ -36,7 +36,7 @@ class LoginButtonTests: XCTestCase {
     }
     
     func test_setsBackgroundColorToDisabledColor_WhenSetEnabledToFalse() throws {
-        let sut = LoginButton()
+        let sut = UIButtonExtended()
         let color: UIColor = .green
         sut.setBackgroundColor(color, for: .disabled)
         
@@ -47,7 +47,7 @@ class LoginButtonTests: XCTestCase {
     
     func test_enabledPropertyIsInSynchWithBackgroundColor() throws {
        
-        let sut = LoginButton()
+        let sut = UIButtonExtended()
         let enabledColor: UIColor = .green
         let disabledColor: UIColor = .red
        

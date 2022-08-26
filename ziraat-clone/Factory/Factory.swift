@@ -10,7 +10,8 @@ import UIKit
 
 class Factory {
     static func makeLoginViewController(onClose: @escaping () -> Void,
-                                 onLoginButtonPressed: @escaping () -> Void) -> UIViewController {
+                                 onLoginButtonPressed: @escaping () -> Void
+                                        ) -> UIViewController {
         let loginVc = LoginViewController()
         //let result: LoginViewModel.Result<Error> =  .error(LoginViewModel.LoginError.badFormattedPassword(""))
         let result: LoginViewModel.Result<Error> = .success
@@ -19,6 +20,7 @@ class Factory {
         loginVc.viewModel = LoginViewModel(service: loginService, accountHolder: accountHolder)
         loginVc.onClose = onClose
         loginVc.onLogin = onLoginButtonPressed
+        
         return loginVc
     }
     
@@ -28,9 +30,11 @@ class Factory {
         return homeVc
     }
     
-    static func makeLandingViewController(loginButtonPressed: @escaping () -> Void) -> LandingViewController {
+    static func makeLandingViewController(loginButtonPressed: @escaping () -> Void,
+                                          onLanguagePressed: @escaping () -> Void) -> LandingViewController {
         let landingVc = LandingViewController(accountHolder: AccountHolder.stub)
         landingVc.onLoginPressed = loginButtonPressed
+        landingVc.onLanguagePressed = onLanguagePressed
         return landingVc
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class MyAssetsViewController: UIViewController {
     var circularProgressBarView: AssetsCircularChart!
        var circularViewDuration: TimeInterval = 2
-    private let assets = Assets(current: 2, deposit: 1, investment: 2)
+    private let assets = Assets(current: 1, deposit: 1, investment: 9)
 
     override func viewDidLoad() {
         super.viewDidLoad()

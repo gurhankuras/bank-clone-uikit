@@ -12,14 +12,20 @@ class AssetsCircularChart: UIView {
     private var shapeLayers = [CAShapeLayer(), CAShapeLayer(), CAShapeLayer()]
     private var centerCircle = CAShapeLayer()
 
-    var totalDuration: TimeInterval = 0.4
+    var totalDuration: TimeInterval = 0.8
     var interDelay: TimeInterval?
     private var startPoint = CGFloat(-Double.pi / 2)
     private var endPoint = CGFloat(3 * Double.pi / 2)
-    var assets: Assets!
+    var assets: Assets! {
+        didSet {
+            percentages = [assets.percent(for: .current), assets.percent(for: .deposit), assets.percent(for: .investment)]
+        }
+    }
+    private var percentages: [CGFloat]!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+         
     }
     
     override func draw(_ rect: CGRect) {
@@ -33,12 +39,13 @@ class AssetsCircularChart: UIView {
         
         var endAngle: CGFloat = startPoint
         var startAngle: CGFloat = startPoint
-        let partitions: [Partition] = [.current, .deposit, .current]
+        let partitions: [Partition] = [.current, .deposit, .investment]
         
         zip(shapeLayers, zip(partitions, [UIColor.chartOrange, UIColor.chartBlue, UIColor.chartGreen]))
             .forEach { (shapeLayer, partition) in
                 startAngle = endAngle
                 endAngle = endAngle + (2 * .pi * (assets.percent(for: partition.0)))
+                print("start: \(startAngle), end: \(endAngle)")
                 
                 let path = UIBezierPath(arcCenter: rectCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
                 shapeLayer.path = path.cgPath
@@ -62,9 +69,9 @@ class AssetsCircularChart: UIView {
         shapeLayers.forEach({ $0.removeAllAnimations() })
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             var delay: CGFloat = 0
-            self.shapeLayers.forEach { shapeLayer in
+            self.shapeLayers.enumerated().forEach { index, shapeLayer in
                 let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-                animation.duration = self.totalDuration
+                animation.duration = self.percentages[index] * self.totalDuration
                 animation.beginTime = CACurrentMediaTime() + delay
                 animation.toValue = 1
                 animation.fillMode = .forwards

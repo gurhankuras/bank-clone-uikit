@@ -22,6 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.delegate = self
 
         mainFlow = MainFlow(navigationViewController: navigationController)
+        mainFlow.requestRecomposition = { [weak self] rootViewController in
+            self?.window?.rootViewController = rootViewController
+        }
         mainFlow.start()
         
         window?.rootViewController = navigationController

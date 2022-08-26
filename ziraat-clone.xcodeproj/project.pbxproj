@@ -20,7 +20,7 @@
 		224A4BA82892E0AF00FB4DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224A4BA62892E0AF00FB4DDB /* LaunchScreen.storyboard */; };
 		224A4BB22892E3D700FB4DDB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 224A4BB12892E3D700FB4DDB /* SnapKit */; };
 		224A4BB5289319C800FB4DDB /* UserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB4289319C800FB4DDB /* UserAvatar.swift */; };
-		224A4BB728931A1400FB4DDB /* HalfSizePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB628931A1400FB4DDB /* HalfSizePresentationController.swift */; };
+		224A4BB728931A1400FB4DDB /* CustomSizedPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB628931A1400FB4DDB /* CustomSizedPresentationController.swift */; };
 		224A4BB928931E5C00FB4DDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BB828931E5C00FB4DDB /* LoginViewController.swift */; };
 		224A4BBB28933AA700FB4DDB /* LoginWelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBA28933AA700FB4DDB /* LoginWelcomeMessageView.swift */; };
 		224A4BBD2893430E00FB4DDB /* LoginSheetCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBC2893430E00FB4DDB /* LoginSheetCloseButton.swift */; };
@@ -35,11 +35,16 @@
 		224EA7A928B2EB9D0028A91B /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7A828B2EB9D0028A91B /* MainFlow.swift */; };
 		224EA7AC28B2EBC30028A91B /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AB28B2EBC30028A91B /* Factory.swift */; };
 		224EA7AE28B2EF780028A91B /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AD28B2EF780028A91B /* FactoryTests.swift */; };
-		224EA7B028B56E2E0028A91B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AF28B56E2E0028A91B /* LoginButton.swift */; };
+		224EA7B028B56E2E0028A91B /* UIButtonExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7AF28B56E2E0028A91B /* UIButtonExtended.swift */; };
 		224EA7B428B5711A0028A91B /* LoginButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B328B5711A0028A91B /* LoginButtonTests.swift */; };
 		224EA7B628B63A5C0028A91B /* MyAssetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B528B63A5C0028A91B /* MyAssetsViewController.swift */; };
 		224EA7B828B641710028A91B /* UIColor+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B728B641710028A91B /* UIColor+Color.swift */; };
 		224EA7BA28B666F50028A91B /* AssetsCircularChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7B928B666F50028A91B /* AssetsCircularChart.swift */; };
+		224EA7BC28B79E1C0028A91B /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7BB28B79E1C0028A91B /* LanguageSelectionViewController.swift */; };
+		224EA7BE28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7BD28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift */; };
+		224EA7C028B7ACD10028A91B /* LandingBottomActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7BF28B7ACD10028A91B /* LandingBottomActionBar.swift */; };
+		224EA7C328B945110028A91B /* UIFont+bold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7C228B945110028A91B /* UIFont+bold.swift */; };
+		224EA7C528B946A00028A91B /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7C428B946A00028A91B /* LanguageViewModel.swift */; };
 		2275B2052897219600BAD58E /* NSDirectionalEdgeInsets+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275B2042897219600BAD58E /* NSDirectionalEdgeInsets+init.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +74,7 @@
 		224A4BA72892E0AF00FB4DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		224A4BA92892E0AF00FB4DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		224A4BB4289319C800FB4DDB /* UserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatar.swift; sourceTree = "<group>"; };
-		224A4BB628931A1400FB4DDB /* HalfSizePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSizePresentationController.swift; sourceTree = "<group>"; };
+		224A4BB628931A1400FB4DDB /* CustomSizedPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSizedPresentationController.swift; sourceTree = "<group>"; };
 		224A4BB828931E5C00FB4DDB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		224A4BBA28933AA700FB4DDB /* LoginWelcomeMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWelcomeMessageView.swift; sourceTree = "<group>"; };
 		224A4BBC2893430E00FB4DDB /* LoginSheetCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetCloseButton.swift; sourceTree = "<group>"; };
@@ -84,11 +89,16 @@
 		224EA7A828B2EB9D0028A91B /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		224EA7AB28B2EBC30028A91B /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		224EA7AD28B2EF780028A91B /* FactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTests.swift; sourceTree = "<group>"; };
-		224EA7AF28B56E2E0028A91B /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		224EA7AF28B56E2E0028A91B /* UIButtonExtended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtended.swift; sourceTree = "<group>"; };
 		224EA7B328B5711A0028A91B /* LoginButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonTests.swift; sourceTree = "<group>"; };
 		224EA7B528B63A5C0028A91B /* MyAssetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAssetsViewController.swift; sourceTree = "<group>"; };
 		224EA7B728B641710028A91B /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
 		224EA7B928B666F50028A91B /* AssetsCircularChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsCircularChart.swift; sourceTree = "<group>"; };
+		224EA7BB28B79E1C0028A91B /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
+		224EA7BD28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordFieldDelegate.swift; sourceTree = "<group>"; };
+		224EA7BF28B7ACD10028A91B /* LandingBottomActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingBottomActionBar.swift; sourceTree = "<group>"; };
+		224EA7C228B945110028A91B /* UIFont+bold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+bold.swift"; sourceTree = "<group>"; };
+		224EA7C428B946A00028A91B /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		2275B2042897219600BAD58E /* NSDirectionalEdgeInsets+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +157,8 @@
 				224A4BB828931E5C00FB4DDB /* LoginViewController.swift */,
 				224A4BBC2893430E00FB4DDB /* LoginSheetCloseButton.swift */,
 				2222F46328AF9E2E00C1CEBD /* LoginViewModel.swift */,
-				224EA7AF28B56E2E0028A91B /* LoginButton.swift */,
+				224EA7AF28B56E2E0028A91B /* UIButtonExtended.swift */,
+				224EA7BD28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -186,7 +197,6 @@
 				224A4BA92892E0AF00FB4DDB /* Info.plist */,
 				224A4BC528945D0400FB4DDB /* UIViewController+addChildView.swift */,
 				2222F46128AF9AE800C1CEBD /* AccountHolder.swift */,
-				224EA7B728B641710028A91B /* UIColor+Color.swift */,
 			);
 			path = "ziraat-clone";
 			sourceTree = "<group>";
@@ -199,7 +209,10 @@
 				2222F45F28AF99CD00C1CEBD /* Campaigns */,
 				224A4B9F2892E0AE00FB4DDB /* LandingViewController.swift */,
 				224A4BB4289319C800FB4DDB /* UserAvatar.swift */,
-				224A4BB628931A1400FB4DDB /* HalfSizePresentationController.swift */,
+				224A4BB628931A1400FB4DDB /* CustomSizedPresentationController.swift */,
+				224EA7BB28B79E1C0028A91B /* LanguageSelectionViewController.swift */,
+				224EA7BF28B7ACD10028A91B /* LandingBottomActionBar.swift */,
+				224EA7C428B946A00028A91B /* LanguageViewModel.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -227,6 +240,7 @@
 		224A4BCC2895C93F00FB4DDB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				224EA7C128B944F30028A91B /* Extensions */,
 				224A4BCD2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift */,
 				2275B2042897219600BAD58E /* NSDirectionalEdgeInsets+init.swift */,
 			);
@@ -247,6 +261,15 @@
 				224EA7AB28B2EBC30028A91B /* Factory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		224EA7C128B944F30028A91B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				224EA7B728B641710028A91B /* UIColor+Color.swift */,
+				224EA7C228B945110028A91B /* UIFont+bold.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,18 +395,23 @@
 				224A4BB5289319C800FB4DDB /* UserAvatar.swift in Sources */,
 				224EA7A928B2EB9D0028A91B /* MainFlow.swift in Sources */,
 				224A4BA02892E0AE00FB4DDB /* LandingViewController.swift in Sources */,
+				224EA7C528B946A00028A91B /* LanguageViewModel.swift in Sources */,
 				224A4BC42893FBA900FB4DDB /* Campaigns.swift in Sources */,
 				224A4BBB28933AA700FB4DDB /* LoginWelcomeMessageView.swift in Sources */,
 				224A4BCB2895B9F700FB4DDB /* AccountHead.swift in Sources */,
+				224EA7BC28B79E1C0028A91B /* LanguageSelectionViewController.swift in Sources */,
 				224A4BBD2893430E00FB4DDB /* LoginSheetCloseButton.swift in Sources */,
+				224EA7C328B945110028A91B /* UIFont+bold.swift in Sources */,
 				2222F46228AF9AE800C1CEBD /* AccountHolder.swift in Sources */,
 				224A4BC628945D0400FB4DDB /* UIViewController+addChildView.swift in Sources */,
 				224EA7B628B63A5C0028A91B /* MyAssetsViewController.swift in Sources */,
+				224EA7BE28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift in Sources */,
 				224A4BC02893D06700FB4DDB /* HomePageViewController.swift in Sources */,
-				224EA7B028B56E2E0028A91B /* LoginButton.swift in Sources */,
+				224EA7B028B56E2E0028A91B /* UIButtonExtended.swift in Sources */,
+				224EA7C028B7ACD10028A91B /* LandingBottomActionBar.swift in Sources */,
 				2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */,
 				224A4BC92895703200FB4DDB /* AccountsViewController.swift in Sources */,
-				224A4BB728931A1400FB4DDB /* HalfSizePresentationController.swift in Sources */,
+				224A4BB728931A1400FB4DDB /* CustomSizedPresentationController.swift in Sources */,
 				224EA7BA28B666F50028A91B /* AssetsCircularChart.swift in Sources */,
 				224A4BCE2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift in Sources */,
 				224A4BC22893DB6100FB4DDB /* MoveUpPageTransition.swift in Sources */,

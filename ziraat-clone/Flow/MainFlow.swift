@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 class MainFlow {
-    let navigationViewController: UINavigationController
+    var requestRecomposition: ((UIViewController) -> Void)?
+    var navigationViewController: UINavigationController
 
     init(navigationViewController: UINavigationController) {
         self.navigationViewController = navigationViewController
@@ -20,9 +21,15 @@ class MainFlow {
         //showHome()
     }
     func showLanding() {
-        let loginCallback: () -> Void =  { [weak self] in self?.showLoginSheet() }
-        let vc = Factory.makeLandingViewController(loginButtonPressed: loginCallback)
+        let vc = rootViewController()
         navigationViewController.setViewControllers([vc], animated: true)
+    }
+    
+    private func rootViewController() -> UIViewController {
+        let loginCallback: () -> Void =  { [weak self] in self?.showLoginSheet() }
+        let languageCallback: () -> Void = { [weak self] in self?.presentLanguageSelectionSheet() }
+        let vc = Factory.makeLandingViewController(loginButtonPressed: loginCallback, onLanguagePressed: languageCallback)
+        return vc
     }
     
     func showLoginSheet() {
@@ -31,6 +38,24 @@ class MainFlow {
         vc.modalPresentationStyle = .custom
         vc.view.layer.cornerRadius = 20
         vc.view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        vc.view.backgroundColor = .white
+        navigationViewController.present(vc, animated: true)
+    }
+    
+    private func presentLanguageSelectionSheet() {
+        let vc = LanguageSelectionViewController()
+        vc.didSelectLanguage = { [weak self] lang in
+            print("\(lang.rawValue) selected")
+            self?.navigationViewController.dismiss(animated: true, completion: {
+                guard let self = self else { return }
+                let vc = self.rootViewController()
+                self.navigationViewController = UINavigationController(rootViewController: vc)
+                self.requestRecomposition?(self.navigationViewController)
+                //self?.showHome()
+
+            })
+        }
+        vc.modalPresentationStyle = .custom
         vc.view.backgroundColor = .white
         navigationViewController.present(vc, animated: true)
     }

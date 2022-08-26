@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoginButton: UIButton {
+class UIButtonExtended: UIButton {
     private(set) var disabledBackgroundColor: UIColor?
     private(set) var enabledBackgroundColor: UIColor?
     
@@ -37,12 +37,7 @@ class LoginButton: UIButton {
     }
     
     private func configure() {
-        setTitleColor(.white, for: .normal)
-        setTitleColor(.white.withAlphaComponent(0.5), for: .highlighted)
-        titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        backgroundColor = .red
-        layer.cornerRadius = 20
-        titleLabel?.lineBreakMode = .byWordWrapping
+        
     }
     
     required init?(coder: NSCoder) {

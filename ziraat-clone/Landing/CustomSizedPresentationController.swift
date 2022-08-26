@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-class HalfSizePresentationController: UIPresentationController {
+class CustomSizedPresentationController: UIPresentationController {
     var gesture: UITapGestureRecognizer?
+    var heightDivider: CGFloat = 3.5
     var dimmedView: UIView!
     
     func getDimmedView(recognizer: UITapGestureRecognizer?) -> UIView {
@@ -28,15 +29,13 @@ class HalfSizePresentationController: UIPresentationController {
    
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let bounds = containerView?.bounds else { return .zero }
-        let maxY = bounds.height / 4
+        let maxY = bounds.height / heightDivider
         let height = bounds.height - maxY
         return CGRect(x: 0, y: maxY, width: bounds.width, height: height)
     }
     
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
-        
-    
         guard let container = containerView else {
             fatalError("There is no container view")
         }

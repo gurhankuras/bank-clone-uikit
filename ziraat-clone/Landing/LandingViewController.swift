@@ -8,18 +8,16 @@
 import UIKit
 import SnapKit
 
-
-
 class LandingViewController: UIViewController {
     var campaigns: Campaigns!
     var onLoginPressed: (() -> Void)?
+    var onLanguagePressed: (() -> Void)?
     var accountHolder: AccountHolder?
     
     convenience init(accountHolder: AccountHolder) {
         self.init(nibName: nil, bundle: nil)
         self.accountHolder = accountHolder
     }
-    
     
     lazy var backgroundImage: UIImageView = {
         let image = UIImage(named: "th")
@@ -46,6 +44,20 @@ class LandingViewController: UIViewController {
         return userView
     }()
     
+    lazy var loginButton: UIButton = {
+        let loginButton = UIButton()
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.setTitle("Login".uppercased(), for: .normal)
+        loginButton.setTitleColor(.darkGray, for: .normal)
+        loginButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        loginButton.backgroundColor = .white
+        loginButton.contentEdgeInsets =  UIEdgeInsets(top: 12, left: 36, bottom: 12, right: 36)
+        loginButton.layer.cornerRadius = 20
+        loginButton.titleLabel?.lineBreakMode = .byWordWrapping
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        return loginButton
+    }()
+    
   
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -55,77 +67,14 @@ class LandingViewController: UIViewController {
         backgroundImage.layer.addSublayer(overlayLayer)
     }
     
-
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         view.backgroundColor = .red
         configureLayout()
     }
     
-    private func makeOptionContainer(with image: String, title: String) -> UIView {
-        let optionImage = UIImage(systemName: image)
-        let optionImageView = UIImageView(image: optionImage)
-        optionImageView.translatesAutoresizingMaskIntoConstraints = false
-        optionImageView.tintColor = .red
-        
-        let optionContainer = UIView()
-        optionContainer.translatesAutoresizingMaskIntoConstraints = false
-        optionContainer.backgroundColor = UIColor.quaternarySystemFill
-        optionContainer.layer.cornerRadius = 15
-        
-        optionContainer.addSubview(optionImageView)
-        optionImageView.snp.makeConstraints { make in
-            make.centerX.centerY.equalTo(optionContainer)
-            make.width.equalTo(optionContainer.snp.width).multipliedBy(0.6)
-            make.height.equalTo(optionContainer.snp.width).multipliedBy(0.6)
-        }
-        
-        
-        let optionWrapper = UIView()
-        optionWrapper.translatesAutoresizingMaskIntoConstraints = false
-        optionWrapper.addSubview(optionContainer)
-        
-        optionContainer.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(10)
-            make.width.height.equalTo(50)
-        }
-        
-        
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = title
-        label.adjustsFontSizeToFitWidth
-        label.textColor = .darkGray
-        label.font = .systemFont(ofSize: 11, weight: .semibold)
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        optionWrapper.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.top.equalTo(optionContainer.snp.bottom).offset(5)
-            make.width.equalTo(optionWrapper).multipliedBy(0.9)
-            make.centerX.equalTo(optionWrapper)
-        }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doSomething))
-        optionWrapper.addGestureRecognizer(tapGesture)
-        return optionWrapper
-
-    }
-    
     @objc func doSomething() {
         print("do something")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-       
-
     }
     
     @objc private func login() {
@@ -136,6 +85,10 @@ class LandingViewController: UIViewController {
         print("close")
         dismiss(animated: true)
     }
+    
+    @objc private func presentLanguageSelectionSheet() {
+        onLanguagePressed?()
+    }
 }
 
 
@@ -143,7 +96,7 @@ class LandingViewController: UIViewController {
 extension LandingViewController {
     
     private func configureNavigationBar() {
-        let leftNavButton = UIBarButtonItem(title: "EN", style: .done, target: self, action: nil)
+        let leftNavButton = UIBarButtonItem(title: "EN", style: .done, target: self, action: #selector(presentLanguageSelectionSheet))
         leftNavButton.tintColor = .white
         navigationItem.leftBarButtonItem = leftNavButton
         
@@ -151,6 +104,8 @@ extension LandingViewController {
         rightNavButton.tintColor = .white
         navigationItem.rightBarButtonItem = rightNavButton
     }
+    
+
     
     private func configureLayout() {
         configureNavigationBar()
@@ -221,16 +176,7 @@ extension LandingViewController {
         }
         
         
-        let loginButton = UIButton()
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.setTitle("Login".uppercased(), for: .normal)
-        loginButton.setTitleColor(.darkGray, for: .normal)
-        loginButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        loginButton.backgroundColor = .white
-        loginButton.contentEdgeInsets =  UIEdgeInsets(top: 12, left: 36, bottom: 12, right: 36)
-        loginButton.layer.cornerRadius = 20
-        loginButton.titleLabel?.lineBreakMode = .byWordWrapping
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        
         view.addSubview(loginButton)
         
         loginButton.snp.makeConstraints { make in
@@ -246,55 +192,26 @@ extension LandingViewController {
             make.bottom.equalTo(view)
             make.height.equalTo(100)
         }
-    
+         
         
-        let options = UIView()
-        options.backgroundColor = .white
-        options.layer.cornerRadius = 20
-        options.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        view.addSubview(options)
-        options.snp.makeConstraints { make in
+        let actionsBar = LandingBottomActionBar()
+        view.addSubview(actionsBar)
+        actionsBar.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(100)
         }
-        options.layer.cornerRadius = 20
-        options.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        let qrOption = makeOptionContainer(with: "qrcode", title: "QR Operations")
-        let transfersOption = makeOptionContainer(with: "arrow.left.arrow.right", title: "Easy Transfer")
-        let financialOption = makeOptionContainer(with: "chart.bar.xaxis", title: "Financial Data")
-        let approvalOption = makeOptionContainer(with: "checkmark.circle.fill", title: "Ziraat Approval")
-        let otherTransactionsOption = makeOptionContainer(with: "square.grid.2x2.fill", title: "Other Transactions")
-
-        
-        let optionsStack = UIStackView(arrangedSubviews: [qrOption, transfersOption, financialOption, approvalOption, otherTransactionsOption])
-        optionsStack.distribution = .fillEqually
-        
-        options.addSubview(optionsStack)
-        
-        //optionsStack.backgroundColor = .orange.withAlphaComponent(0.2)
-        optionsStack.snp.makeConstraints { make in
-            make.leading.equalTo(options).offset(15)
-            make.trailing.equalTo(options).offset(-15)
-            make.bottom.top.equalTo(options)
-        }
-
-        /*
         campaigns = Campaigns()
         self.add(campaigns, frame: .zero)
         campaigns.view.translatesAutoresizingMaskIntoConstraints = false
         
         campaigns.view.snp.makeConstraints { make in
-            make.bottom.equalTo(options.snp.top).offset(-10)
+            make.bottom.equalTo(actionsBar.snp.top).offset(-10)
             make.leading.equalTo(view.snp.leading)
             make.trailing.equalTo(view.snp.trailing)
             make.height.equalTo(150)
         }
-         */
-        
-       
-        
     }
 }
 

@@ -35,25 +35,8 @@ class MoveUpPageTransition: NSObject, UIViewControllerAnimatedTransitioning {
             return
         }
         
-        
         transitionContext.containerView.addSubview(view)
         translate(view: view, to: self.movement, with: transitionContext)
-        /*
-        destinationView.clipsToBounds = true
-        destinationView.transform = CGAffineTransform(translationX: 0, y: movement == .up ?   transitionContext.containerView.frame.size.height : 0)
-        
-        let duration = transitionDuration(using: transitionContext)
-        
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut) { [weak self] in
-            guard let self = self else {
-                transitionContext.completeTransition(false)
-                return
-            }
-            destinationView.transform = CGAffineTransform(translationX: 0, y: self.movement == .up ? 0 : transitionContext.containerView.frame.size.height)
-        } completion: { _ in
-            transitionContext.completeTransition(true)
-        }
-         */
     }
     
     private func translate(view: UIView, to direction: MovementType, with context: UIViewControllerContextTransitioning) {
