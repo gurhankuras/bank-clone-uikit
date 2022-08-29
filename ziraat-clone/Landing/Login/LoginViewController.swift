@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     var onClose: (() -> Void)?
     var onLogin: (() -> Void)?
-    var closeButton: LoginSheetCloseButton!
+    var closeButton: CloseButton!
     var viewModel: LoginViewModel!
     lazy var passwordFieldDelegate = LoginPasswordFieldDelegate(viewModel: self.viewModel)
     
@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.setBackgroundColor(.red, for: .enabled)
         button.setBackgroundColor(.red.withAlphaComponent(0.5), for: .disabled)
-        button.setTitle("Login".uppercased(), for: .normal)
+        button.setTitle(L10n.login_button_title.localized, for: .normal)
         button.contentEdgeInsets =  UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         button.addTarget(self, action: #selector(login), for: .touchUpInside)
         button.isEnabled = false
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     
     lazy var passwordField: UITextField = {
         func makePlaceholder() -> NSAttributedString {
-            let placeholder = NSMutableAttributedString(string: "Password")
+            let placeholder = NSMutableAttributedString(string: L10n.password_placeholder.localized)
             let range = NSRange(location: 0, length: placeholder.length)
             placeholder.addAttribute(.foregroundColor, value: UIColor.darkGray, range: range)
             placeholder.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .regular), range: range)
@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
     
     lazy var changeUserButton: UIButton = {
         let changeUserButton = UIButton()
-        let buttonText =  "Change User"
+        let buttonText =  L10n.change_user.localized
         let buttonTitle = NSMutableAttributedString(string: buttonText)
         let buttonTextRange = NSRange(location: 0, length: buttonTitle.length)
         buttonTitle.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: buttonTextRange)
@@ -90,9 +90,7 @@ class LoginViewController: UIViewController {
         return changeUserButton
     }()
     
-    deinit {
-        print("LoginViewController deinit")
-    }
+    deinit { log_deinit(Self.self) }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,7 +185,7 @@ extension LoginViewController {
             make.trailing.equalTo(view).offset(-horizontalPadding)
         }
          
-        closeButton = LoginSheetCloseButton()
+        closeButton = CloseButton()
         closeButton.isUserInteractionEnabled = true
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.onClose = onClose

@@ -15,11 +15,11 @@ class LandingBottomActionBar: UIView {
         layer.cornerRadius = 20
         layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        let qrOption = makeOptionContainer(with: "qrcode", title: "QR Operations")
-        let transfersOption = makeOptionContainer(with: "arrow.left.arrow.right", title: "Easy Transfer")
-        let financialOption = makeOptionContainer(with: "chart.bar.xaxis", title: "Financial Data")
-        let approvalOption = makeOptionContainer(with: "checkmark.circle.fill", title: "Ziraat Approval")
-        let otherTransactionsOption = makeOptionContainer(with: "square.grid.2x2.fill", title: "Other Transactions")
+        let qrOption = makeOptionContainer(with: "qrcode", title: L10n.qr_operation.localized)
+        let transfersOption = makeOptionContainer(with: "arrow.left.arrow.right", title: L10n.easy_transfer.localized)
+        let financialOption = makeOptionContainer(with: "chart.bar.xaxis", title: L10n.financial_data.localized)
+        let approvalOption = makeOptionContainer(with: "checkmark.circle.fill", title: L10n.ziraat_approval.localized)
+        let otherTransactionsOption = makeOptionContainer(with: "square.grid.2x2.fill", title: L10n.other_transactions.localized)
 
         let optionsStack = UIStackView(arrangedSubviews: [qrOption, transfersOption, financialOption, approvalOption, otherTransactionsOption])
         optionsStack.distribution = .fillEqually

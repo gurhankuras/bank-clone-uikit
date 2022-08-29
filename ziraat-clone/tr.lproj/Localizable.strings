@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  ziraat-clone
+
+  Created by Gürhan Kuraş on 8/26/22.
+  
+*/
+"login_button_title" = "Giriş";
+"landing_login_button_title" = "Giriş Yap";
+"qr_operation" = "QR İşlemleri";
+"easy_transfer" = "Kolay Transfer";
+"financial_data" = "Finansal Veri";
+"ziraat_approval" = "Ziraat Onay";
+"other_transactions" = "Diğer İşlemler";
+
+"change_user" = "Kullanıcı Değiştir";
+"password_placeholder" = "Şifre";
+"close_button_text" = "Kapat";
+
+"user_type_personal_text" = "Bireysel";
+"user_type_business_text" = "Ticari";
+
+"personal_text" = "Bireysel";
+"welcome_message" = "Ziraat Mobil'e Hoş Geldiniz";
+
+"yes" = "Evet";
+"no" = "Hayır";
+"app_exit_warning_message" = "Uygulamadan çıkış yapmak istediğinize emin misiniz?";

@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  ziraat-clone
+
+  Created by Gürhan Kuraş on 8/26/22.
+  
+*/
+
+"login_button_title" = "Login";
+"landing_login_button_title" = "Login";
+
+"qr_operation" = "QR Operations";
+"easy_transfer" = "Easy Transfer";
+"financial_data" = "Financial Data";
+"ziraat_approval" = "Ziraat Approval";
+"other_transactions" = "Other Transactions";
+
+"change_user" = "Change User";
+"password_placeholder" = "Password";
+"close_button_text" = "Close";
+
+"user_type_personal_text" = "Personal";
+"user_type_business_text" = "Business";
+
+"personal_text" = "Personal";
+"welcome_message" = "Welcome to Ziraat Mobile";
+
+"yes" = "Yes";
+"no" = "no";
+"app_exit_warning_message" = "Are you sure you want to exit from application?";

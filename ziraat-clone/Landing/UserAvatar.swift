@@ -85,7 +85,6 @@ class UserAvatar: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let a = bigCircleView.frame.width
         bigCircleView.layer.cornerRadius = max(bigCircleView.frame.width, bigCircleView.frame.height) / 2
         if let miniCircle = miniCircle {
             miniCircle.layer.cornerRadius = max(bigCircleView.frame.width * Self.circleRatio, bigCircleView.frame.height * Self.circleRatio) / 2

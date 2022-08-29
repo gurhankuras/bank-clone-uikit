@@ -11,24 +11,26 @@ import UIKit
 class MainFlow {
     var requestRecomposition: ((UIViewController) -> Void)?
     var navigationViewController: UINavigationController
-
+    lazy var languageViewModel = LanguageViewModel(languageService: languageChanger)
+    lazy var languageChanger: AppLanguageUser = AppLanguageService()
     init(navigationViewController: UINavigationController) {
         self.navigationViewController = navigationViewController
     }
 
     func start() {
-        showLanding()
-        //showHome()
+        languageChanger.applyCurrent()
+        //showLanding()
+        showHome()
     }
     func showLanding() {
-        let vc = rootViewController()
+        let vc = rootViewController(in: languageChanger.currentLanguage)
         navigationViewController.setViewControllers([vc], animated: true)
     }
     
-    private func rootViewController() -> UIViewController {
+    private func rootViewController(in language: Language) -> UIViewController {
         let loginCallback: () -> Void =  { [weak self] in self?.showLoginSheet() }
         let languageCallback: () -> Void = { [weak self] in self?.presentLanguageSelectionSheet() }
-        let vc = Factory.makeLandingViewController(loginButtonPressed: loginCallback, onLanguagePressed: languageCallback)
+        let vc = Factory.makeLandingViewController(language: language, loginButtonPressed: loginCallback, onLanguagePressed: languageCallback)
         return vc
     }
     
@@ -44,15 +46,21 @@ class MainFlow {
     
     private func presentLanguageSelectionSheet() {
         let vc = LanguageSelectionViewController()
+        vc.viewModel = languageViewModel
         vc.didSelectLanguage = { [weak self] lang in
             print("\(lang.rawValue) selected")
+            guard let landingViewController = self?.navigationViewController.topViewController as? LandingViewController else {
+                return
+            }
+            
             self?.navigationViewController.dismiss(animated: true, completion: {
                 guard let self = self else { return }
-                let vc = self.rootViewController()
+                print("current lang: \(self.languageChanger.currentLanguage)")
+                
+                let vc = self.rootViewController(in: lang)
                 self.navigationViewController = UINavigationController(rootViewController: vc)
                 self.requestRecomposition?(self.navigationViewController)
-                //self?.showHome()
-
+                 
             })
         }
         vc.modalPresentationStyle = .custom

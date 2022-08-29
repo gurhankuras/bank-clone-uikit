@@ -17,7 +17,15 @@ class LanguageViewModel {
     var supportedLanguages: [Language] = [.tr, .en]
     var selectedLanguage: Language = .tr {
         didSet {
+            languageService.set(to: selectedLanguage)
+            languageService.applyCurrent()
             didSelectLanguage?(selectedLanguage)
         }
+    }
+    let languageService: AppLanguageUser
+    
+    init(languageService: AppLanguageUser) {
+        self.languageService = languageService
+        selectedLanguage = languageService.currentLanguage
     }
 }

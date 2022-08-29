@@ -45,7 +45,7 @@ class AssetsCircularChart: UIView {
             .forEach { (shapeLayer, partition) in
                 startAngle = endAngle
                 endAngle = endAngle + (2 * .pi * (assets.percent(for: partition.0)))
-                print("start: \(startAngle), end: \(endAngle)")
+                // print("start: \(startAngle), end: \(endAngle)")
                 
                 let path = UIBezierPath(arcCenter: rectCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
                 shapeLayer.path = path.cgPath
@@ -89,69 +89,3 @@ class AssetsCircularChart: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-/*
-let firstEndAngle = startPoint + (2 * .pi * (assets.percent(for: .current)))
-let firstPath = UIBezierPath(arcCenter: rectCenter, radius: radius, startAngle: startPoint, endAngle: firstEndAngle, clockwise: true)
-
-currentPartitionLayer.path = firstPath.cgPath
-currentPartitionLayer.fillColor = UIColor.clear.cgColor
-currentPartitionLayer.lineCap = .butt
-currentPartitionLayer.lineWidth = lineWidth
-currentPartitionLayer.strokeStart = 0
-currentPartitionLayer.strokeEnd = 0
-currentPartitionLayer.strokeColor = UIColor.chartBlue.cgColor
-layer.addSublayer(currentPartitionLayer)
-
-
-let secondEndAngle = firstEndAngle + (2 * .pi * assets.percent(for: .deposit))
-let secondPath = UIBezierPath(arcCenter: rectCenter, radius: radius, startAngle: firstEndAngle, endAngle: secondEndAngle, clockwise: true)
-
-depositPartitionLayer.path = secondPath.cgPath
-depositPartitionLayer.fillColor = UIColor.clear.cgColor
-depositPartitionLayer.lineCap = .butt
-depositPartitionLayer.lineWidth = lineWidth
-depositPartitionLayer.strokeStart = 0
-depositPartitionLayer.strokeEnd = 0
-depositPartitionLayer.strokeColor = UIColor.chartOrange.cgColor
-layer.addSublayer(depositPartitionLayer)
-
-let thirdPath = UIBezierPath(arcCenter: rectCenter, radius: radius, startAngle: secondEndAngle, endAngle: secondEndAngle + (2 * .pi * (assets.percent(for: .investment))),
-                                clockwise: true)
-investPartitionLayer.path = thirdPath.cgPath
-investPartitionLayer.fillColor = UIColor.clear.cgColor
-investPartitionLayer.lineCap = .butt
-investPartitionLayer.lineWidth = lineWidth
-investPartitionLayer.strokeStart = 0
-investPartitionLayer.strokeEnd = 0
-investPartitionLayer.strokeColor = UIColor.chartGreen.cgColor
-layer.addSublayer(investPartitionLayer)
- */
-
-
-/*
-let currentAccountProgressAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-currentAccountProgressAnimation.duration = self.totalDuration
-currentAccountProgressAnimation.toValue = 1
-currentAccountProgressAnimation.fillMode = .forwards
-currentAccountProgressAnimation.isRemovedOnCompletion = false
-self.currentPartitionLayer.add(currentAccountProgressAnimation, forKey: nil)
-
-
-let secondAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-secondAnimation.duration = self.totalDuration
-secondAnimation.toValue = 1
-secondAnimation.beginTime = CACurrentMediaTime() + currentAccountProgressAnimation.duration
-secondAnimation.fillMode = .forwards
-secondAnimation.isRemovedOnCompletion = false
-self.depositPartitionLayer.add(secondAnimation, forKey: nil)
-
-
-let thirdAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.strokeEnd))
-thirdAnimation.duration = self.totalDuration
-thirdAnimation.toValue = 1
-thirdAnimation.beginTime = CACurrentMediaTime() + currentAccountProgressAnimation.duration + secondAnimation.duration
-thirdAnimation.fillMode = .forwards
-thirdAnimation.isRemovedOnCompletion = false
-self.investPartitionLayer.add(thirdAnimation, forKey: nil)
- */

@@ -8,52 +8,10 @@
 import Foundation
 import UIKit
 
-
-class LanguageButton: UIButton {
-    var language: Language!
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                backgroundColor = .red
-            } else {
-                backgroundColor = .white
-            }
-            
-        }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    convenience init(language: Language) {
-        self.init(frame: .zero)
-        self.language = language
-        setTitleColor(.white, for: .normal)
-        setTitleColor(.white, for: .selected)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-
 class LanguageSelectionViewController: UIViewController {
     var didSelectLanguage: ((Language) -> Void)?
-    var selectedLanguage: Language = .tr {
-        didSet {
-            updateButtons()
-        }
-    }
-    
-    private func updateButtons() {
-        languageButtons.forEach { button in
-            button.isSelected = button.language == selectedLanguage
-        }
-    }
-    
+    var viewModel: LanguageViewModel!
+    private var languageButtons: [LanguageButton] = []
     
     lazy var loginTransitionDelegate: LanguageSelectionTransitionDelegate = {
         let loginTransitionDelegate = LanguageSelectionTransitionDelegate()
@@ -63,7 +21,6 @@ class LanguageSelectionViewController: UIViewController {
         return loginTransitionDelegate
     }()
     
-    private var languageButtons: [LanguageButton] = []
     
     private func languageButton(with language: Language) -> LanguageButton {
         let button = LanguageButton(language: language)
@@ -89,16 +46,10 @@ class LanguageSelectionViewController: UIViewController {
         titleLabel.textColor = .black
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.font = .preferredFont(forTextStyle: .footnote)
-        let turkishButton = languageButton(with: .tr)
-        let englishButton = languageButton(with: .en)
-        languageButtons.append(contentsOf: [turkishButton, englishButton])
-       
         
-        
-        
-        
-        
-        let horizontalStackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel, turkishButton, englishButton])
+        languageButtons.append(contentsOf: self.viewModel.supportedLanguages.map({ languageButton(with: $0) }))
+
+        let horizontalStackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel] + languageButtons)
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 6
@@ -108,17 +59,14 @@ class LanguageSelectionViewController: UIViewController {
         iconImageView.snp.makeConstraints { make in
             make.height.width.equalTo(24)
         }
-        
-        
-        
+
         return horizontalStackView
     }()
     
     @objc func dummySelector(_ sender: UIButton) {
         guard let languageButton = sender as? LanguageButton else { return }
-        print("dummy \(languageButton.language?.rawValue)")
-        selectedLanguage = languageButton.language
-        didSelectLanguage?(selectedLanguage)
+        print("dummy \(String(describing: languageButton.language?.rawValue))")
+        viewModel.selectedLanguage = languageButton.language
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -127,13 +75,18 @@ class LanguageSelectionViewController: UIViewController {
 
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLayout()
+        updateButtons(with: viewModel.selectedLanguage)
         
+        viewModel.didSelectLanguage = { [weak self] newLanguage in
+            self?.updateButtons(with: newLanguage)
+            self?.didSelectLanguage?(newLanguage)
+        }
+    }
+    
+    private func configureLayout() {
         view.addSubview(selection)
         let horizontalPadding = 16
         selection.snp.makeConstraints { make in
@@ -152,14 +105,30 @@ class LanguageSelectionViewController: UIViewController {
             make.trailing.equalTo(view).inset(horizontalPadding)
         }
         
-        updateButtons()
-        /*
-        view.addSubview(languageButton)
-        languageButton.snp.makeConstraints { make in
-            make.leading.equalTo(selection.snp.trailing)
-            make.top.equalTo(selection.snp.top)
+        let closeButton = CloseButton()
+        closeButton.axis = .horizontal
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.onClose = { [weak self] in
+            self?.dismiss(animated: true)
         }
-         */
+        
+        view.addSubview(closeButton)
+        closeButton.snp.makeConstraints { make in
+            make.leading.equalTo(divider)
+            make.top.equalTo(divider).offset(10)
+            make.trailing.equalTo(divider)
+        }
+    }
+    
+    private func updateButtons(with language: Language) {
+        languageButtons.forEach { button in
+            button.isSelected = button.language == language
+        }
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

@@ -30,9 +30,10 @@ class Factory {
         return homeVc
     }
     
-    static func makeLandingViewController(loginButtonPressed: @escaping () -> Void,
+    static func makeLandingViewController(language: Language,
+                                          loginButtonPressed: @escaping () -> Void,
                                           onLanguagePressed: @escaping () -> Void) -> LandingViewController {
-        let landingVc = LandingViewController(accountHolder: AccountHolder.stub)
+        let landingVc = LandingViewController(accountHolder: AccountHolder.stub, language: language)
         landingVc.onLoginPressed = loginButtonPressed
         landingVc.onLanguagePressed = onLanguagePressed
         return landingVc

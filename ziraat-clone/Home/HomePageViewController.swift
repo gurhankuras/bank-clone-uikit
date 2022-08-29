@@ -8,17 +8,24 @@
 import Foundation
 import UIKit
 
+
+
 class HomePageViewController: UIPageViewController {
     var onExit: (() -> Void)?
     var pages = [UIViewController]()
     let pageControl = UIPageControl()
     var pageIndex = 0
     
+    override func loadView() {
+        super.loadView()
+        view.layer.contents = UIImage(named: "th")?.cgImage
+        view.layer.contentsGravity = .resizeAspectFill
+    }
+    
+    deinit { log_deinit(Self.self) }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.contents = UIImage(named: "th")?.cgImage
-        self.view.layer.contentsGravity = .resizeAspectFill
-        //view.backgroundColor = .darkGray
         configureNavigationBar()
         dataSource = self
         delegate = self
@@ -67,8 +74,10 @@ class HomePageViewController: UIPageViewController {
     
     
     @objc func exit() {
-        onExit?()
+        ExitAlertPresenter.present(on: navigationController)
     }
+    
+   
 }
 
 

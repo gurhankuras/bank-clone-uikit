@@ -11,6 +11,19 @@ import UIKit
 enum UserType: String {
     case personal
     case business
+    
+    var localized: String {
+        var key: String
+        
+        switch self {
+        case .personal:
+            key = "user_type_personal_text"
+        case .business:
+            key = "user_type_business_text"
+        }
+        
+        return NSLocalizedString(key, tableName: nil, bundle: .main, value: key, comment: key)
+    }
 }
 
 class LoginWelcomeMessageView: UIView {
@@ -20,20 +33,20 @@ class LoginWelcomeMessageView: UIView {
     
     convenience init(userType: UserType, formalName: String) {
         self.init(frame: .zero)
-        customize(userType: userType, formalName: formalName)
+        customize(for: userType, formalName: formalName)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        customize(userType: .personal, formalName: " ")
+        customize(for: .personal, formalName: " ")
     }
     
-    private func customize(userType: UserType, formalName: String) {
+    private func customize(for userType: UserType, formalName: String) {
         let textColor = UIColor.darkGray
         
         let welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        welcomeLabel.text = "Welcome to Ziraat Mobile"
+        welcomeLabel.text = L10n.welcome_message.localized
         welcomeLabel.textColor = textColor
         welcomeLabel.font = .systemFont(ofSize: 14, weight: .regular)
   
@@ -48,7 +61,7 @@ class LoginWelcomeMessageView: UIView {
         
         let userTypeLabel = UILabel()
         userTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        userTypeLabel.text = userType.rawValue.uppercased()
+        userTypeLabel.text = userType.localized.uppercased()
         userTypeLabel.textColor = textColor
         userTypeLabel.font = .systemFont(ofSize: 13, weight: .regular)
         

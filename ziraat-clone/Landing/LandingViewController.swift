@@ -10,13 +10,16 @@ import SnapKit
 
 class LandingViewController: UIViewController {
     var campaigns: Campaigns!
+    var language: Language!
     var onLoginPressed: (() -> Void)?
     var onLanguagePressed: (() -> Void)?
+    var didLanguageChanged: (() -> Void)?
     var accountHolder: AccountHolder?
     
-    convenience init(accountHolder: AccountHolder) {
+    convenience init(accountHolder: AccountHolder, language: Language) {
         self.init(nibName: nil, bundle: nil)
         self.accountHolder = accountHolder
+        self.language = language
     }
     
     lazy var backgroundImage: UIImageView = {
@@ -47,7 +50,7 @@ class LandingViewController: UIViewController {
     lazy var loginButton: UIButton = {
         let loginButton = UIButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.setTitle("Login".uppercased(), for: .normal)
+        loginButton.setTitle(L10n.landing_login_button_title.localized.uppercased(with: Locale.current), for: .normal)
         loginButton.setTitleColor(.darkGray, for: .normal)
         loginButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         loginButton.backgroundColor = .white
@@ -96,7 +99,7 @@ class LandingViewController: UIViewController {
 extension LandingViewController {
     
     private func configureNavigationBar() {
-        let leftNavButton = UIBarButtonItem(title: "EN", style: .done, target: self, action: #selector(presentLanguageSelectionSheet))
+        let leftNavButton = UIBarButtonItem(title: language.rawValue.uppercased(), style: .done, target: self, action: #selector(presentLanguageSelectionSheet))
         leftNavButton.tintColor = .white
         navigationItem.leftBarButtonItem = leftNavButton
         
@@ -137,7 +140,7 @@ extension LandingViewController {
      
         let welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        welcomeLabel.text = "Welcome to Ziraat Mobile"
+        welcomeLabel.text = L10n.welcome_message.localized
         welcomeLabel.textColor = .white
         welcomeLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
@@ -150,7 +153,7 @@ extension LandingViewController {
         
         let userTypeLabel = UILabel()
         userTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        userTypeLabel.text = "personal".uppercased()
+        userTypeLabel.text = L10n.personal_text.localized.uppercased()
         userTypeLabel.textColor = .white
         userTypeLabel.font = .systemFont(ofSize: 14, weight: .medium)
         
