@@ -1,0 +1,19 @@
+disabled_rules:
+    - force_cast
+    - force_unwrapping
+    - trailing_whitespace
+line_length: 130
+large_tuple:
+    warning: 4
+    error: 4
+identifier_name:
+  allowed_symbols: "_"
+  min_length: # only min_length
+    warning: 1
+  excluded: # excluded via string array
+    - vc
+    - vm
+    - id
+    - v
+    - URL
+    - GlobalAPIKey
