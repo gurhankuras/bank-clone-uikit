@@ -10,6 +10,6 @@ import OSLog
 
 func log_deinit<T>(_ type: T.Type) {
     print(String(describing: T.self), "deinit")
-    
-    //print(String(reflecting: T.self).split(separator: ".").last!, "deinit")
+
+    // print(String(reflecting: T.self).split(separator: ".").last!, "deinit")
 }

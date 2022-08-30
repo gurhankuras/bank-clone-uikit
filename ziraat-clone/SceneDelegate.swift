@@ -6,37 +6,34 @@
 //
 
 import UIKit
-
+import OSLog
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var mainFlow: MainFlow!
-    
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow()
-        window?.windowScene = windowScene
         
+        
+        window?.windowScene = windowScene
+
         let navigationController = UINavigationController()
         navigationController.delegate = self
 
         mainFlow = MainFlow(navigationViewController: navigationController)
         mainFlow.requestRecomposition = { [weak self] rootViewController in
             self?.window?.rootViewController = rootViewController
-            
+
         }
         mainFlow.start()
-        
+
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-    
-   
-    
-    
-    
-    
+
 }
 
 extension SceneDelegate: UINavigationControllerDelegate {
@@ -51,5 +48,3 @@ extension SceneDelegate: UINavigationControllerDelegate {
             return nil
         }
 }
-
-

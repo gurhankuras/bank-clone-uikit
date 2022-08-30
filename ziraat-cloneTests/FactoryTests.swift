@@ -13,13 +13,13 @@ class FactoryTests: XCTestCase {
         let vc = Factory.makeHomeViewController(onExit: {}) as! HomePageViewController
         XCTAssertNotNil(vc.onExit)
     }
-    
+
     func test_makeLandingViewController_setsCallbacks() throws {
-        let vc = Factory.makeLandingViewController(loginButtonPressed: {}, onLanguagePressed: {})
+        let vc = Factory.makeLandingViewController(language: .en, loginButtonPressed: {}, onLanguagePressed: {})
         XCTAssertNotNil(vc.onLoginPressed)
         XCTAssertNotNil(vc.onLanguagePressed)
     }
-    
+
     func test_makeLoginViewController_setsCallbacks() throws {
         let vc = Factory.makeLoginViewController(onClose: {}, onLoginButtonPressed: {}) as! LoginViewController
         XCTAssertNotNil(vc.onLogin)

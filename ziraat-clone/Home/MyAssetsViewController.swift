@@ -19,12 +19,12 @@ class MyAssetsViewController: UIViewController {
         setUpCircularProgressBarView()
         circularProgressBarView.progressAnimation(duration: circularViewDuration)
     }
-    
+
     func setUpCircularProgressBarView() {
         circularProgressBarView = AssetsCircularChart(frame: .zero)
-        //circularProgressBarView.backgroundColor = .red.withAlphaComponent(0.4)
+        // circularProgressBarView.backgroundColor = .red.withAlphaComponent(0.4)
         circularProgressBarView.assets = assets
-        
+
         /*
         let r = UIGraphicsImageRenderer(size: CGSize(width: 200, height: 200))
         let maskImage = r.image { ctx in
@@ -33,52 +33,49 @@ class MyAssetsViewController: UIViewController {
             p.fill()
         }
          */
-       
-        
+
         view.addSubview(circularProgressBarView)
-        
+
         circularProgressBarView.snp.makeConstraints { make in
             make.width.equalTo(200)
             make.height.equalTo(200)
             make.centerX.equalTo(view)
             make.top.equalTo(view.safeAreaLayoutGuide)
         }
-        
+
         let totalLabel = UILabel()
         totalLabel.textColor = .secondaryLabel
         totalLabel.text = "Total"
-        
-        
+
         let amountLabel = UILabel()
         amountLabel.textColor = .white
         amountLabel.text = "* * * * TL"
         amountLabel.font = .systemFont(ofSize: 17, weight: .bold)
-        
+
         let stack = UIStackView(arrangedSubviews: [totalLabel, amountLabel])
         stack.axis = .vertical
         stack.alignment = .center
         view.addSubview(stack)
-        
+
         stack.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(circularProgressBarView)
         }
-        
-        
-        
+
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let maskView = UIView()
-        
-        maskView.backgroundColor = .red //you can modify this to whatever you need
-        maskView.frame = CGRect(x: 0, y: 0, width: circularProgressBarView.frame.width, height: circularProgressBarView.frame.height)
+
+        maskView.backgroundColor = .red
+        let (width, height) = (circularProgressBarView.frame.width, circularProgressBarView.frame.height)
+        maskView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         maskView.layer.cornerRadius = 100
         circularProgressBarView.addSubview(maskView)
         circularProgressBarView.mask = maskView
 
     }
-    
+
     @objc func animateChart() {
         print("animate")
         circularProgressBarView.progressAnimation(duration: circularViewDuration)
@@ -92,11 +89,11 @@ struct Assets {
     let current: CGFloat
     let deposit: CGFloat
     let investment: CGFloat
-    
+
     var total: CGFloat {
         current + deposit + investment
     }
-    
+
     func percent(for partition: Partition) -> CGFloat {
         switch partition {
         case .current:
@@ -107,7 +104,7 @@ struct Assets {
             return investment / total
         }
     }
-    
+
     func cumulativePercent(until partition: Partition) -> CGFloat {
         switch partition {
         case .current:
@@ -119,5 +116,3 @@ struct Assets {
         }
     }
 }
-
-

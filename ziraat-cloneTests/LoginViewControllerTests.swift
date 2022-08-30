@@ -13,8 +13,8 @@ class LandingViewControllerTests: XCTestCase {
     func testExample() throws {
         let sut = LandingViewController()
         sut.onLoginPressed = {
-            
+
         }
-        
+
     }
 }

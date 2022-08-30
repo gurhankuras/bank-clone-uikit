@@ -8,12 +8,11 @@
 import Foundation
 import UIKit
 
-
 extension UIEdgeInsets {
     static func all(_ inset: CGFloat) -> Self {
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
-    
+
     static func symmetric(_ axis: NSLayoutConstraint.Axis, inset: CGFloat) -> Self {
         switch axis {
         case .vertical:

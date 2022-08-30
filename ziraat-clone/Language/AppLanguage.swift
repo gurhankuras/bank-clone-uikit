@@ -21,20 +21,18 @@ protocol AppLanguageProviding {
 
 typealias AppLanguageUser = AppLanguageChanging & AppLanguageApplying & AppLanguageProviding
 
-
-
 class AppLanguageService: AppLanguageUser {
     private let key = "selectedLanguage"
     private let defaultLanguage: Language = .tr
-    
+
     func set(to language: Language) {
         UserDefaults.standard.set(language.rawValue, forKey: key)
     }
-    
+
     func applyCurrent() {
         Bundle.setLanguage(currentLanguage.rawValue.lowercased())
     }
-    
+
     var currentLanguage: Language {
         if let persistedLanguage = UserDefaults.standard.string(forKey: key) {
             return Language(rawValue: persistedLanguage) ?? defaultLanguage
@@ -48,20 +46,20 @@ class AppLanguageService: AppLanguageUser {
     }
 }
 
-//MARK: Localization configure bundle
+// MARK: Localization configure bundle
 extension Bundle {
     class func setLanguage(_ language: String) {
         var onceToken: Int = 0
-        
-        if (onceToken == 0) {
-            /* TODO: move below code to a static variable initializer (dispatch_once is deprecated) */
+
+        if onceToken == 0 {
             object_setClass(Bundle.main, PrivateBundle.self)
         }
         onceToken = 1
+        // swiftlint:disable line_length
         objc_setAssociatedObject(Bundle.main, &associatedLanguageBundle, (language != nil) ? Bundle(path: Bundle.main.path(forResource: language, ofType: "lproj") ?? "") : nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
-private var associatedLanguageBundle:Character = "0"
+private var associatedLanguageBundle: Character = "0"
 
 class PrivateBundle: Bundle {
     override func localizedString(forKey key: String, value: String?, table tableName: String?) -> String {

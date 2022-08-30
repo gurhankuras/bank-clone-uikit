@@ -22,32 +22,33 @@ class AssetsCircularChart: UIView {
         }
     }
     private var percentages: [CGFloat]!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-         
+
     }
-    
+
     override func draw(_ rect: CGRect) {
         self.layer.sublayers = []
         let lineWidth: CGFloat = 25.0
         let minAxis = min(rect.width, rect.height)
         let radius = (minAxis / 2) - (lineWidth / 2)
         let rectCenter = CGPoint(x: rect.width / 2.0, y: rect.height / 2.0)
-      
+
         drawCenterCircle(center: rectCenter, radius: (minAxis / 2) - lineWidth)
-        
+
         var endAngle: CGFloat = startPoint
         var startAngle: CGFloat = startPoint
         let partitions: [Partition] = [.current, .deposit, .investment]
-        
+
         zip(shapeLayers, zip(partitions, [UIColor.chartOrange, UIColor.chartBlue, UIColor.chartGreen]))
             .forEach { (shapeLayer, partition) in
                 startAngle = endAngle
-                endAngle = endAngle + (2 * .pi * (assets.percent(for: partition.0)))
+                endAngle += (2 * .pi * (assets.percent(for: partition.0)))
                 // print("start: \(startAngle), end: \(endAngle)")
-                
-                let path = UIBezierPath(arcCenter: rectCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+
+                let path = UIBezierPath(arcCenter: rectCenter, radius: radius,
+                                        startAngle: startAngle, endAngle: endAngle, clockwise: true)
                 shapeLayer.path = path.cgPath
                 shapeLayer.fillColor = UIColor.clear.cgColor
                 shapeLayer.lineCap = .butt
@@ -58,13 +59,14 @@ class AssetsCircularChart: UIView {
                 self.layer.addSublayer(shapeLayer)
             }
     }
-    
+
     private func drawCenterCircle(center: CGPoint, radius: CGFloat) {
-        centerCircle.path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startPoint, endAngle: endPoint, clockwise: true).cgPath
+        centerCircle.path = UIBezierPath(arcCenter: center, radius: radius,
+                                         startAngle: startPoint, endAngle: endPoint, clockwise: true).cgPath
         centerCircle.fillColor = UIColor.black.withAlphaComponent(0.15).cgColor
         layer.addSublayer(centerCircle)
     }
-    
+
     func progressAnimation(duration: TimeInterval) {
         shapeLayers.forEach({ $0.removeAllAnimations() })
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -84,7 +86,7 @@ class AssetsCircularChart: UIView {
             }
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -8,13 +8,11 @@
 import Foundation
 
 struct AccountHolder {
-    let tc: String
+    let identityNumber: String
     let firstName: String
     let middleName: String?
     let surname: String
-    
-    
-    
+
     var fullName: String {
         if let middleName = middleName {
             return "\(firstName) \(middleName) \(surname)"
@@ -25,7 +23,7 @@ struct AccountHolder {
 
 extension AccountHolder {
     static var stub: AccountHolder {
-        AccountHolder(tc: "21484486692", firstName: "Tevfik", middleName: "Gurhan", surname: "Kuraş")
+        AccountHolder(identityNumber: "21484486692", firstName: "Tevfik", middleName: "Gurhan", surname: "Kuraş")
     }
 }
 /*

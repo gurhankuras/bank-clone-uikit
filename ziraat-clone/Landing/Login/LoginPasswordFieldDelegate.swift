@@ -13,13 +13,12 @@ class LoginPasswordFieldDelegate: NSObject, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("didendediting")
     }
-    
+
     convenience init(viewModel: LoginViewModel) {
         self.init()
         self.viewModel = viewModel
     }
-    
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newPassword = NSString(string: text).replacingCharacters(in: range, with: string) as String

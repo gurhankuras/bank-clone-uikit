@@ -12,7 +12,7 @@ extension UIView {
     func doesNotWantToGrow(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
         setContentHuggingPriority(priority, for: axis)
     }
-    
+
     func doesNotWantToShrink(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
         setContentCompressionResistancePriority(priority, for: axis)
     }

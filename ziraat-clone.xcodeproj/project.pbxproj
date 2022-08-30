@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2222F45328AF909300C1CEBD /* ziraat_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45228AF909300C1CEBD /* ziraat_cloneTests.swift */; };
+		22001B2728BD0F030057D6A5 /* CampaignCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B2628BD0F030057D6A5 /* CampaignCell.swift */; };
+		22001B2928BD0F180057D6A5 /* CampaignItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B2828BD0F180057D6A5 /* CampaignItem.swift */; };
+		22001B2B28BD13610057D6A5 /* CampaignPageViewControllerSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B2A28BD13610057D6A5 /* CampaignPageViewControllerSlide.swift */; };
+		22001B2D28BDF9780057D6A5 /* CustomPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B2C28BDF9780057D6A5 /* CustomPageController.swift */; };
+		22001B3028BE306B0057D6A5 /* CampaignsCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B2F28BE306B0057D6A5 /* CampaignsCarousel.swift */; };
+		22001B3228BE32480057D6A5 /* CampaignsCarouselSlideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B3128BE32480057D6A5 /* CampaignsCarouselSlideCell.swift */; };
+		22001B3428BE97B70057D6A5 /* MoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001B3328BE97B70057D6A5 /* MoreInfoView.swift */; };
 		2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */; };
 		2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */; };
 		2222F46228AF9AE800C1CEBD /* AccountHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F46128AF9AE800C1CEBD /* AccountHolder.swift */; };
@@ -26,7 +32,7 @@
 		224A4BBD2893430E00FB4DDB /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBC2893430E00FB4DDB /* CloseButton.swift */; };
 		224A4BC02893D06700FB4DDB /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BBF2893D06700FB4DDB /* HomePageViewController.swift */; };
 		224A4BC22893DB6100FB4DDB /* MoveUpPageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC12893DB6100FB4DDB /* MoveUpPageTransition.swift */; };
-		224A4BC42893FBA900FB4DDB /* Campaigns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC32893FBA900FB4DDB /* Campaigns.swift */; };
+		224A4BC42893FBA900FB4DDB /* CampaignsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC32893FBA900FB4DDB /* CampaignsCollectionViewController.swift */; };
 		224A4BC628945D0400FB4DDB /* UIViewController+addChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC528945D0400FB4DDB /* UIViewController+addChildView.swift */; };
 		224A4BC92895703200FB4DDB /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BC82895703200FB4DDB /* AccountsViewController.swift */; };
 		224A4BCB2895B9F700FB4DDB /* AccountHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A4BCA2895B9F700FB4DDB /* AccountHead.swift */; };
@@ -84,8 +90,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		22001B2628BD0F030057D6A5 /* CampaignCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCell.swift; sourceTree = "<group>"; };
+		22001B2828BD0F180057D6A5 /* CampaignItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignItem.swift; sourceTree = "<group>"; };
+		22001B2A28BD13610057D6A5 /* CampaignPageViewControllerSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignPageViewControllerSlide.swift; sourceTree = "<group>"; };
+		22001B2C28BDF9780057D6A5 /* CustomPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageController.swift; sourceTree = "<group>"; };
+		22001B2F28BE306B0057D6A5 /* CampaignsCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignsCarousel.swift; sourceTree = "<group>"; };
+		22001B3128BE32480057D6A5 /* CampaignsCarouselSlideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignsCarouselSlideCell.swift; sourceTree = "<group>"; };
+		22001B3328BE97B70057D6A5 /* MoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoView.swift; sourceTree = "<group>"; };
 		2222F45028AF909300C1CEBD /* ziraat-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ziraat-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2222F45228AF909300C1CEBD /* ziraat_cloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ziraat_cloneTests.swift; sourceTree = "<group>"; };
 		2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControllerTests.swift; sourceTree = "<group>"; };
 		2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetTransitionDelegate.swift; sourceTree = "<group>"; };
 		2222F46128AF9AE800C1CEBD /* AccountHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHolder.swift; sourceTree = "<group>"; };
@@ -104,7 +116,7 @@
 		224A4BBC2893430E00FB4DDB /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		224A4BBF2893D06700FB4DDB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		224A4BC12893DB6100FB4DDB /* MoveUpPageTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveUpPageTransition.swift; sourceTree = "<group>"; };
-		224A4BC32893FBA900FB4DDB /* Campaigns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaigns.swift; sourceTree = "<group>"; };
+		224A4BC32893FBA900FB4DDB /* CampaignsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignsCollectionViewController.swift; sourceTree = "<group>"; };
 		224A4BC528945D0400FB4DDB /* UIViewController+addChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addChildView.swift"; sourceTree = "<group>"; };
 		224A4BC82895703200FB4DDB /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		224A4BCA2895B9F700FB4DDB /* AccountHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHead.swift; sourceTree = "<group>"; };
@@ -162,11 +174,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22001B2E28BE30470057D6A5 /* CollectionViewDenemesi */ = {
+			isa = PBXGroup;
+			children = (
+				22001B2F28BE306B0057D6A5 /* CampaignsCarousel.swift */,
+				22001B3128BE32480057D6A5 /* CampaignsCarouselSlideCell.swift */,
+			);
+			path = CollectionViewDenemesi;
+			sourceTree = "<group>";
+		};
 		2222F45128AF909300C1CEBD /* ziraat-cloneTests */ = {
 			isa = PBXGroup;
 			children = (
 				2222F45B28AF930E00C1CEBD /* ui */,
-				2222F45228AF909300C1CEBD /* ziraat_cloneTests.swift */,
 				2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */,
 				2222F46528AFB53400C1CEBD /* LoginViewModelTests.swift */,
 				224EA7A528B2E5130028A91B /* MainFlowTests.swift */,
@@ -186,7 +206,13 @@
 		2222F45F28AF99CD00C1CEBD /* Campaigns */ = {
 			isa = PBXGroup;
 			children = (
-				224A4BC32893FBA900FB4DDB /* Campaigns.swift */,
+				22001B2E28BE30470057D6A5 /* CollectionViewDenemesi */,
+				224A4BC32893FBA900FB4DDB /* CampaignsCollectionViewController.swift */,
+				22001B2628BD0F030057D6A5 /* CampaignCell.swift */,
+				22001B2828BD0F180057D6A5 /* CampaignItem.swift */,
+				22001B2A28BD13610057D6A5 /* CampaignPageViewControllerSlide.swift */,
+				22001B2C28BDF9780057D6A5 /* CustomPageController.swift */,
+				22001B3328BE97B70057D6A5 /* MoreInfoView.swift */,
 			);
 			path = Campaigns;
 			sourceTree = "<group>";
@@ -498,7 +524,6 @@
 				224EA7AE28B2EF780028A91B /* FactoryTests.swift in Sources */,
 				2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */,
 				224EA7A628B2E5130028A91B /* MainFlowTests.swift in Sources */,
-				2222F45328AF909300C1CEBD /* ziraat_cloneTests.swift in Sources */,
 				224EA7B428B5711A0028A91B /* LoginButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,12 +533,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				225822C228BA9C5500906459 /* CustomAlertController.swift in Sources */,
+				22001B2D28BDF9780057D6A5 /* CustomPageController.swift in Sources */,
 				224A4BB928931E5C00FB4DDB /* LoginViewController.swift in Sources */,
 				224A4BB5289319C800FB4DDB /* UserAvatar.swift in Sources */,
 				224EA7A928B2EB9D0028A91B /* MainFlow.swift in Sources */,
 				224A4BA02892E0AE00FB4DDB /* LandingViewController.swift in Sources */,
 				224EA7C528B946A00028A91B /* LanguageViewModel.swift in Sources */,
-				224A4BC42893FBA900FB4DDB /* Campaigns.swift in Sources */,
+				224A4BC42893FBA900FB4DDB /* CampaignsCollectionViewController.swift in Sources */,
 				224A4BBB28933AA700FB4DDB /* LoginWelcomeMessageView.swift in Sources */,
 				224A4BCB2895B9F700FB4DDB /* AccountHead.swift in Sources */,
 				225822CF28BB8A7100906459 /* ScalingFadingAnimatedTransition.swift in Sources */,
@@ -524,22 +550,28 @@
 				2222F46228AF9AE800C1CEBD /* AccountHolder.swift in Sources */,
 				22965F7D28B96E6C00C4ADD0 /* AppLanguage.swift in Sources */,
 				224A4BC628945D0400FB4DDB /* UIViewController+addChildView.swift in Sources */,
+				22001B3028BE306B0057D6A5 /* CampaignsCarousel.swift in Sources */,
 				225822D228BBA58100906459 /* log_deinit.swift in Sources */,
+				22001B2728BD0F030057D6A5 /* CampaignCell.swift in Sources */,
 				224EA7B628B63A5C0028A91B /* MyAssetsViewController.swift in Sources */,
 				224EA7BE28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift in Sources */,
 				224A4BC02893D06700FB4DDB /* HomePageViewController.swift in Sources */,
 				224EA7B028B56E2E0028A91B /* UIButtonExtended.swift in Sources */,
 				224EA7C028B7ACD10028A91B /* LandingBottomActionBar.swift in Sources */,
 				2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */,
+				22001B3428BE97B70057D6A5 /* MoreInfoView.swift in Sources */,
 				224A4BC92895703200FB4DDB /* AccountsViewController.swift in Sources */,
 				224A4BB728931A1400FB4DDB /* CustomSizedPresentationController.swift in Sources */,
 				224EA7BA28B666F50028A91B /* AssetsCircularChart.swift in Sources */,
 				224A4BCE2895C98700FB4DDB /* UIView+doesNotWantToGrow+doesNotWantToShrink.swift in Sources */,
+				22001B2B28BD13610057D6A5 /* CampaignPageViewControllerSlide.swift in Sources */,
 				224A4BC22893DB6100FB4DDB /* MoveUpPageTransition.swift in Sources */,
 				224EA7D228B95B790028A91B /* NSBundle+Language.m in Sources */,
 				224A4B9C2892E0AE00FB4DDB /* AppDelegate.swift in Sources */,
 				225822C428BA9DF100906459 /* CustomAlertPresentationController.swift in Sources */,
+				22001B3228BE32480057D6A5 /* CampaignsCarouselSlideCell.swift in Sources */,
 				2275B2052897219600BAD58E /* NSDirectionalEdgeInsets+init.swift in Sources */,
+				22001B2928BD0F180057D6A5 /* CampaignItem.swift in Sources */,
 				2222F46428AF9E2E00C1CEBD /* LoginViewModel.swift in Sources */,
 				224EA7B828B641710028A91B /* UIColor+Color.swift in Sources */,
 				225822CD28BB889100906459 /* ExitAlertPresenter.swift in Sources */,

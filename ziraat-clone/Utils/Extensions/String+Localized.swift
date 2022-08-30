@@ -7,13 +7,11 @@
 
 import Foundation
 
-
 extension String {
     func localized() -> Self {
         NSLocalizedString(self, tableName: nil, bundle: .main, value: self, comment: self)
     }
 }
-
 
 enum L10n: String {
     case landing_login_button_title
@@ -31,9 +29,9 @@ enum L10n: String {
     case yes
     case no
     case app_exit_warning_message
-    
+
     var localized: String {
         NSLocalizedString(self.rawValue, tableName: nil, bundle: .main, value: self.rawValue, comment: self.rawValue)
     }
-    
+
 }

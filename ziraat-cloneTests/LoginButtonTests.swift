@@ -13,51 +13,51 @@ class LoginButtonTests: XCTestCase {
         let sut = UIButtonExtended()
         let color: UIColor = .red
         sut.setBackgroundColor(color, for: .enabled)
-        
+
         XCTAssertEqual(sut.enabledBackgroundColor, color)
     }
-    
+
     func test_setBackgroundColor_correctlySetsColorForDisabledState() throws {
         let sut = UIButtonExtended()
         let color: UIColor = .red
         sut.setBackgroundColor(color, for: .disabled)
-        
+
         XCTAssertEqual(sut.disabledBackgroundColor, color)
     }
-    
+
     func test_setsBackgroundColorToEnabledColor_WhenSetEnabledToTrue() throws {
         let sut = UIButtonExtended()
         let color: UIColor = .green
         sut.setBackgroundColor(color, for: .enabled)
-        
+
         sut.isEnabled = true
-        
+
         XCTAssertEqual(sut.backgroundColor, color)
     }
-    
+
     func test_setsBackgroundColorToDisabledColor_WhenSetEnabledToFalse() throws {
         let sut = UIButtonExtended()
         let color: UIColor = .green
         sut.setBackgroundColor(color, for: .disabled)
-        
+
         sut.isEnabled = false
-        
+
         XCTAssertEqual(sut.backgroundColor, color)
     }
-    
+
     func test_enabledPropertyIsInSynchWithBackgroundColor() throws {
-       
+
         let sut = UIButtonExtended()
         let enabledColor: UIColor = .green
         let disabledColor: UIColor = .red
-       
+
         // prepare
         sut.setBackgroundColor(enabledColor, for: .enabled)
         sut.setBackgroundColor(disabledColor, for: .disabled)
 
         sut.isEnabled = false
         XCTAssertEqual(sut.backgroundColor, disabledColor)
-        
+
         sut.isEnabled = true
         XCTAssertEqual(sut.backgroundColor, enabledColor)
     }

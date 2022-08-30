@@ -14,7 +14,6 @@ extension UIColor {
     static let chartGreen = UIColor(rgb: (86, 177, 101))
     static let primary = UIColor(rgb: (225, 4, 19))
 
-    
     convenience init(rgb: (Int, Int, Int), alpha: CGFloat = 1) {
         self.init(red: CGFloat(rgb.0) / 255, green: CGFloat(rgb.1) / 255, blue: CGFloat(rgb.2) / 255, alpha: alpha)
     }

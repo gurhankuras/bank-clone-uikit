@@ -12,7 +12,7 @@ class CustomSizedPresentationController: UIPresentationController {
     var gesture: UITapGestureRecognizer?
     var heightDivider: CGFloat = 3.5
     var dimmedView: UIView!
-    
+
     func getDimmedView(recognizer: UITapGestureRecognizer?) -> UIView {
         let backdrop = UIView()
         backdrop.backgroundColor = .black.withAlphaComponent(1)
@@ -25,15 +25,14 @@ class CustomSizedPresentationController: UIPresentationController {
         }
         return backdrop
     }
-    
-   
+
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let bounds = containerView?.bounds else { return .zero }
         let maxY = bounds.height / heightDivider
         let height = bounds.height - maxY
         return CGRect(x: 0, y: maxY, width: bounds.width, height: height)
     }
-    
+
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
         guard let container = containerView else {
@@ -52,15 +51,14 @@ class CustomSizedPresentationController: UIPresentationController {
         })
         print("willbegin")
     }
-    
+
     override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
         guard let coordinator = presentingViewController.transitionCoordinator else { return }
-        //guard let avatar = containerView?.subviews.filter({ $0.tag == 99 }).first else { return }
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.dimmedView.layer.opacity = 0
-        }) { _ in
+        }, completion: { _ in
             self.dimmedView = nil
-        }
+        })
     }
 }

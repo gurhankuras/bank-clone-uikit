@@ -11,7 +11,7 @@ import UIKit
 class ScalingFadingAnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
     private let duration: Double
     private let type: AnimationType
-    
+
     init(duration: Double, for type: AnimationType = .present) {
         self.duration = duration
         self.type = type
@@ -21,14 +21,14 @@ class ScalingFadingAnimatedTransition: NSObject, UIViewControllerAnimatedTransit
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return TimeInterval(exactly: duration) ?? 0
     }
-    
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let toViewController = transitionContext.viewController(forKey: .to),
               let fromViewController = transitionContext.viewController(forKey: .from) else {
                   transitionContext.completeTransition(false)
             return
         }
-        
+
         switch type {
         case .present:
             transitionContext.containerView.addSubview(toViewController.view)
@@ -39,11 +39,11 @@ class ScalingFadingAnimatedTransition: NSObject, UIViewControllerAnimatedTransit
         }
     }
     private func present(view: UIView, with context: UIViewControllerContextTransitioning) {
-        //view.clipsToBounds = true
+        // view.clipsToBounds = true
         view.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
         view.alpha = 0
         let duration = transitionDuration(using: context)
-        
+
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.65, initialSpringVelocity: 0) {
             view.transform = CGAffineTransform(scaleX: 1, y: 1)
             view.alpha = 1
@@ -51,13 +51,12 @@ class ScalingFadingAnimatedTransition: NSObject, UIViewControllerAnimatedTransit
             context.completeTransition(true)
         }
     }
-    
-    
+
     private func dismiss(view: UIView, with context: UIViewControllerContextTransitioning) {
-        //view.clipsToBounds = true
+        // view.clipsToBounds = true
         view.alpha = 1
         let duration = transitionDuration(using: context)
-        
+
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut) {
             view.alpha = 0
         } completion: { _ in

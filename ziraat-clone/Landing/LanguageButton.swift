@@ -14,10 +14,10 @@ class LanguageButton: UIButton {
         didSet {
             if isSelected {
                 backgroundColor = .red
-                
+
             } else {
                 backgroundColor = .white
-                
+
             }
             layer.shadowColor = isSelected ?  UIColor.red.cgColor : UIColor.black.cgColor
             layer.shadowRadius = 1
@@ -29,15 +29,15 @@ class LanguageButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     convenience init(language: Language) {
         self.init(frame: .zero)
         self.language = language
         setTitleColor(.black, for: .normal)
         setTitleColor(.white, for: .selected)
-        
+
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

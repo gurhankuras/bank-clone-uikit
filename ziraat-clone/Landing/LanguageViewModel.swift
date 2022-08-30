@@ -11,7 +11,6 @@ enum Language: String {
     case tr = "TR", en = "EN"
 }
 
-
 class LanguageViewModel {
     var didSelectLanguage: ((Language) -> Void)?
     var supportedLanguages: [Language] = [.tr, .en]
@@ -23,7 +22,7 @@ class LanguageViewModel {
         }
     }
     let languageService: AppLanguageUser
-    
+
     init(languageService: AppLanguageUser) {
         self.languageService = languageService
         selectedLanguage = languageService.currentLanguage
