@@ -39,15 +39,15 @@ class MainFlowTests: XCTestCase {
     func test_flowStartsWithLanding() throws {
         let sut = MainFlow(navigationViewController: NonAnimatingNavigationController())
         sut.start()
-        XCTAssertEqual(sut.navigationViewController.viewControllers.count, 1)
-        XCTAssertTrue(sut.navigationViewController.viewControllers.first! is LandingViewController)
+        XCTAssertEqual(sut.navigationController.viewControllers.count, 1)
+        XCTAssertTrue(sut.navigationController.viewControllers.first! is LandingViewController)
     }
 
     func test_showsLanding() throws {
         let sut = MainFlow(navigationViewController: NonAnimatingNavigationController())
         sut.showLanding()
-        XCTAssertEqual(sut.navigationViewController.viewControllers.count, 1)
-        XCTAssertTrue(sut.navigationViewController.viewControllers.first! is LandingViewController)
+        XCTAssertEqual(sut.navigationController.viewControllers.count, 1)
+        XCTAssertTrue(sut.navigationController.viewControllers.first! is LandingViewController)
     }
 
     func test_presentsLoginSheetCorrectly() throws {

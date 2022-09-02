@@ -22,11 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let navigationController = UINavigationController()
         navigationController.delegate = self
-
+        
         mainFlow = MainFlow(navigationViewController: navigationController)
         mainFlow.requestRecomposition = { [weak self] rootViewController in
             self?.window?.rootViewController = rootViewController
-
         }
         mainFlow.start()
 

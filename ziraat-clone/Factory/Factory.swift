@@ -31,10 +31,23 @@ class Factory {
 
     static func makeLandingViewController(language: Language,
                                           loginButtonPressed: @escaping () -> Void,
-                                          onLanguagePressed: @escaping () -> Void) -> LandingViewController {
+                                          onLanguagePressed: @escaping () -> Void,
+                                          campaignsViewController: CampaignListViewController) -> LandingViewController {
         let landingVc = LandingViewController(accountHolder: AccountHolder.stub, language: language)
+        landingVc.campaigns = campaignsViewController
         landingVc.onLoginPressed = loginButtonPressed
         landingVc.onLanguagePressed = onLanguagePressed
+//        landingVc.onCampaignSelected = onCampaignSelected
+
         return landingVc
+    }
+    
+    static func makeCampaignsViewController(
+        viewModel: CampaignCollectionViewModel,
+        onCampaignSelected: @escaping (CampaignViewModel) -> Void)
+    -> CampaignListViewController {
+        let vc = CampaignListViewController(viewModel: viewModel)
+        vc.onCampaignSelected = onCampaignSelected
+        return vc
     }
 }

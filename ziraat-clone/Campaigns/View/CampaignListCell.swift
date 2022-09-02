@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-class CampaignCell: UICollectionViewCell {
+class CampaignListCell: UICollectionViewCell {
     var imageView: UIImageView!
-    var item: CampaignItem?
+    var item: CampaignViewModel?
     static let identifier = "campaign_cell"
 
-    convenience init(item: CampaignItem) {
+    convenience init(item: CampaignViewModel) {
         self.init(frame: .zero)
         self.item = item
         self.setup()
@@ -35,7 +35,8 @@ class CampaignCell: UICollectionViewCell {
 
         imageView.layer.cornerRadius = 10
         contentView.layer.cornerRadius = 10
-        imageView.layer.borderColor = UIColor.white.cgColor
+       
+        imageView.layer.borderColor = (item?.read ?? true) ? UIColor.lightGray.cgColor : UIColor.white.cgColor
         imageView.layer.borderWidth = 3
 
         contentView.addSubview(imageView)
@@ -45,11 +46,20 @@ class CampaignCell: UICollectionViewCell {
         self.imageView = imageView
     }
     
-    func configure(with item: CampaignItem) {
+    func configure(with item: CampaignViewModel) {
         imageView.image = UIImage(named: item.image)
+        imageView.layer.borderColor = item.read ? UIColor.lightGray.cgColor : UIColor.white.cgColor
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Configuration
+extension CampaignListCell {
+    struct Configuration {
+        let readColor: UIColor
+        let unreadColor: UIColor
     }
 }

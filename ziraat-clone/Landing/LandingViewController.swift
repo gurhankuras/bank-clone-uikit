@@ -9,15 +9,18 @@ import UIKit
 import SnapKit
 
 class LandingViewController: UIViewController {
-    var campaigns: CampaignsCollectionViewController!
+    var campaigns: CampaignListViewController?
     var language: Language!
     var onLoginPressed: (() -> Void)?
     var onLanguagePressed: (() -> Void)?
-    var didLanguageChanged: (() -> Void)?
     var accountHolder: AccountHolder?
 
     var overlayLayer: CALayer?
-
+    
+    deinit {
+        log_deinit(Self.self)
+    }
+    
     convenience init(accountHolder: AccountHolder, language: Language) {
         self.init(nibName: nil, bundle: nil)
         self.accountHolder = accountHolder
@@ -208,15 +211,17 @@ extension LandingViewController {
             make.height.equalTo(100)
         }
 
-        campaigns = CampaignsCollectionViewController()
-        self.add(campaigns, frame: .zero)
-        campaigns.view.translatesAutoresizingMaskIntoConstraints = false
+        if let campaigns = campaigns {
+            self.add(campaigns, frame: .zero)
+            campaigns.view.translatesAutoresizingMaskIntoConstraints = false
 
-        campaigns.view.snp.makeConstraints { make in
-            make.bottom.equalTo(actionsBar.snp.top).offset(-10)
-            make.leading.equalTo(view.snp.leading)
-            make.trailing.equalTo(view.snp.trailing)
-            make.height.equalTo(125)
+            campaigns.view.snp.makeConstraints { make in
+                make.bottom.equalTo(actionsBar.snp.top).offset(-10)
+                make.leading.equalTo(view.snp.leading)
+                make.trailing.equalTo(view.snp.trailing)
+                make.height.equalTo(125)
+            }
         }
+        
     }
 }

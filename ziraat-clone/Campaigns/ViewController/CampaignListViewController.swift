@@ -8,27 +8,27 @@
 import Foundation
 import UIKit
 
-class CampaignsCollectionViewController: UIViewController {
+class CampaignListViewController: UIViewController {
     var collectionView: UICollectionView!
-    var items: [CampaignItem] = []
+    var onCampaignSelected: ((CampaignViewModel) -> Void)?
+
+    var viewModel: CampaignCollectionViewModel!
+    
+    convenience init(viewModel: CampaignCollectionViewModel) {
+        self.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = makeItems()
         prepareCollectionView()
-
+        viewModel.onCampaignsChanged = { [weak self] _ in
+            self?.collectionView.reloadData()
+        }
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
-    }
-    
-    private func makeItems() -> [CampaignItem] {
-        return [
-            CampaignItem(id: "1", image: "kampanya2", link: nil, select: { [weak self] in self?.select($0) }),
-            CampaignItem(id: "2", image: "kampanya", link: nil, select: { [weak self] in self?.select($0) }),
-            CampaignItem(id: "3", image: "kampanya3", link: nil, select: { [weak self] in self?.select($0) })
-        ]
     }
     
     private func prepareCollectionView() {
@@ -37,27 +37,32 @@ class CampaignsCollectionViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(CampaignCell.self,
-                                forCellWithReuseIdentifier: CampaignCell.identifier)
+        collectionView.register(CampaignListCell.self,
+                                forCellWithReuseIdentifier: CampaignListCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
-        
     }
-    func select(_ item: CampaignItem) {
-        let vc = CustomPageViewController(items: self.items, startItem: item)
-        vc.onExit = { [weak self] in self?.navigationController?.popViewController(animated: true)}
-        self.navigationController?.pushViewController(vc, animated: true)
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
 // MARK: Layout Delegate
-extension CampaignsCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension CampaignListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        items[indexPath.row].select?(items[indexPath.row])
+        let item = viewModel.campaignViewModels[indexPath.row]
+        self.onCampaignSelected?(item)
+        viewModel.markAsRead(id: item.id)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -68,24 +73,24 @@ extension CampaignsCollectionViewController: UICollectionViewDelegateFlowLayout 
 }
 
 // MARK: Data Source
-extension CampaignsCollectionViewController: UICollectionViewDataSource {
+extension CampaignListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
+        return viewModel.campaignViewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CampaignCell.identifier, for: indexPath)
-                as? CampaignCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CampaignListCell.identifier, for: indexPath)
+                as? CampaignListCell else {
             fatalError()
         }
-        cell.configure(with: self.items[indexPath.row])
+        cell.configure(with: viewModel.campaignViewModels[indexPath.row])
         return cell
     }
 
 }
 
 // MARK: Debug
-extension CampaignsCollectionViewController {
+extension CampaignListViewController {
     #if DEBUG
     func debugView() {
         view.layer.borderWidth = 1

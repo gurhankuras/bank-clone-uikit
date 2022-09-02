@@ -38,7 +38,9 @@ class MoreInfoView: UIView {
           
           UIView.animate(withDuration: 1.4, delay: 0, options: options,
                         animations: { [weak self] in
-                    self?.imageView.transform = (self?.imageView.transform ?? .identity).concatenating(.init(translationX: 0, y: -10))
+                    guard let self = self else { return }
+                    let transform = self.imageView.transform .concatenating(.init(translationX: 0, y: -10))
+                    self.imageView.transform = transform
                 }, completion: nil)
       }
     
@@ -50,7 +52,7 @@ class MoreInfoView: UIView {
 
 // MARK: View factory functions
 extension MoreInfoView {
-    func makeLabel(text: String) -> UILabel{
+    func makeLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = .preferredFont(forTextStyle: .footnote)

@@ -8,18 +8,19 @@
 import UIKit
 import OSLog
 
-class CustomPageViewController: UIPageViewController {
+class CampaignCarouselViewController: UIPageViewController {
     private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
-                                       category: String(describing: "CustomPageViewController"))
+                                       category: String(describing: "CampaignCarouselViewController"))
     var onExit: (() -> Void)?
+    var onNext: ((CampaignViewModel) -> Void)?
     var pageIndex = 0 {
         didSet {
             print(pageIndex)
         }
     }
     
-    var items: [CampaignItem] = []
-    var startItem: CampaignItem!
+    var items: [CampaignViewModel] = []
+    var startItem: CampaignViewModel!
 
     override init(transitionStyle style: UIPageViewController.TransitionStyle,
                   navigationOrientation: UIPageViewController.NavigationOrientation,
@@ -27,7 +28,7 @@ class CustomPageViewController: UIPageViewController {
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
     }
 
-    convenience init(items: [CampaignItem], startItem: CampaignItem) {
+    convenience init(items: [CampaignViewModel], startItem: CampaignViewModel) {
         self.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
         self.startItem = startItem
         self.items = items
@@ -59,26 +60,28 @@ class CustomPageViewController: UIPageViewController {
         guard self.pageIndex < self.items.count else { return }
         if self.pageIndex == self.items.count - 1 {
             onExit?()
-            self.dismiss(animated: true)
         } else {
-            self.setViewControllers([makeSlide(with: items[self.pageIndex + 1])], direction: .forward, animated: true)
+            let item = items[self.pageIndex + 1]
+            onNext?(item)
+            self.setViewControllers([makeSlide(with: item)], direction: .forward, animated: true)
         }
+
         self.pageIndex += 1
     }
     
-    func campaignItem(for viewController: UIViewController) -> CampaignItem? {
-        let campaignVc = viewController as? CampaignPageViewControllerSlide
+    func campaignItem(for viewController: UIViewController) -> CampaignViewModel? {
+        let campaignVc = viewController as? CampaignCarouselSlide
         return campaignVc?.item
     }
     
-    func makeSlide(with item: CampaignItem) -> CampaignPageViewControllerSlide {
-        let slide = CampaignPageViewControllerSlide(item: item, onTimeout: { [weak self] in self?.handleTimeout() })
+    func makeSlide(with item: CampaignViewModel) -> CampaignCarouselSlide {
+        let slide = CampaignCarouselSlide(item: item, onTimeout: { [weak self] in self?.handleTimeout() })
         slide.onExit = { [weak self] in self?.onExit?() }
         return slide
     }
 }
                      
-extension CustomPageViewController: UIPageViewControllerDataSource {
+extension CampaignCarouselViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -86,6 +89,7 @@ extension CustomPageViewController: UIPageViewControllerDataSource {
         guard let item = campaignItem(for: viewController),
               let currentIndex = items.firstIndex(of: item) else { return nil }
         pageIndex = currentIndex
+        onNext?(item)
         if currentIndex == 0 {
             return nil
         }
@@ -97,6 +101,7 @@ extension CustomPageViewController: UIPageViewControllerDataSource {
         guard let item = campaignItem(for: viewController),
               let currentIndex = items.firstIndex(of: item) else { return nil }
         pageIndex = currentIndex
+        onNext?(item)
         if currentIndex < items.count - 1 {
             return makeSlide(with: items[currentIndex + 1])
         }
@@ -104,8 +109,9 @@ extension CustomPageViewController: UIPageViewControllerDataSource {
     }
 }
 
-extension CustomPageViewController: UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+extension CampaignCarouselViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            willTransitionTo pendingViewControllers: [UIViewController]) {
         print("willTransitionTo")
     }
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
