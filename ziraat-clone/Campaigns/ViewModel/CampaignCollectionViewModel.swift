@@ -23,7 +23,7 @@ class CampaignCollectionViewModel {
     
     func load() {
         provider.campaigns(completion: { [weak self] items in
-            self?.campaignViewModels = items.map({ .init(item: $0) })
+            self?.campaignViewModels = items.map({ .init(item: $0)})
         })
     }
     

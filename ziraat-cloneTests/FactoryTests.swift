@@ -15,7 +15,7 @@ class FactoryTests: XCTestCase {
     }
 
     func test_makeLandingViewController_setsCallbacks() throws {
-        let vc = Factory.makeLandingViewController(language: .en, loginButtonPressed: {}, onLanguagePressed: {})
+        let vc = Factory.makeLandingViewController(language: .en, loginButtonPressed: {}, onLanguagePressed: {}, campaignsViewController: CampaignListViewController())
         XCTAssertNotNil(vc.onLoginPressed)
         XCTAssertNotNil(vc.onLanguagePressed)
     }

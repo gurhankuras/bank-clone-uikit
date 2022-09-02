@@ -19,6 +19,7 @@ class CarouselFlow: Flow {
     let startItem: CampaignViewModel
     let items: [CampaignViewModel]
     let nextHandler: (CampaignViewModel) -> Void
+    // let campaignStore: CampaignStore
     
     deinit {
         log_deinit(Self.self)
@@ -27,11 +28,13 @@ class CarouselFlow: Flow {
     init(_ navigationController: UINavigationController,
          startingAt item: CampaignViewModel,
          among allItems: [CampaignViewModel],
-         nextHandler: @escaping (CampaignViewModel) -> Void) {
+         nextHandler: @escaping (CampaignViewModel) -> Void
+         /*campaignStore: CampaignStore*/) {
         self.navigationController = navigationController
         self.startItem = item
         self.items = allItems
         self.nextHandler = nextHandler
+//        self.campaignStore = campaignStore
     }
     
     func start() {

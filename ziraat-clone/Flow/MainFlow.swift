@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class MainFlow {
     var navigationController: UINavigationController
@@ -15,9 +16,38 @@ class MainFlow {
 
     // MARK: Dependencies
     lazy var campaignCollectionViewModel: CampaignCollectionViewModel = {
-        let provider = CampaignAPI()
+        let versionProvider = CampaignUserDefaultsVersionProvider()
+        let api = CampaignAPI(versionProvider: versionProvider)
+        let store = CampaignCoreDataStore(container: persistentContainer)
+        let provider = CampaignCacheRemoteSynchronizer(store: store, remote: api)
         let viewModel = CampaignCollectionViewModel(provider: provider)
         return viewModel
+    }()
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+        */
+        let container = NSPersistentContainer(name: "Data")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                 
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
     }()
     lazy var languageViewModel = LanguageViewModel(languageService: languageChanger)
     lazy var languageChanger: AppLanguageUser = AppLanguageService()
@@ -82,13 +112,16 @@ extension MainFlow {
 // MARK: Flows
 extension MainFlow {
     func startCarouselFlow(startingAt item: CampaignViewModel) {
+        //let store = CampaignCoreDataStore(container: persistentContainer)
         carouselFlow = CarouselFlow(
             navigationController,
             startingAt: item,
             among: campaignCollectionViewModel.campaignViewModels,
             nextHandler: { [weak self] item in
                 self?.campaignCollectionViewModel.markAsRead(id: item.id)
-            })
+            }
+          //  campaignStore: store
+        )
         carouselFlow?.cleanUp = { [weak self] in self?.carouselFlow = nil }
         carouselFlow?.start()
     }

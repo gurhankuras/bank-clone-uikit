@@ -8,10 +8,10 @@
 import Foundation
 
 struct CampaignItem: Identifiable {
-    let id: String
-    let image: String
-    let link: String?
-    let read: Bool
+    var id: String
+    var image: String
+    var link: String?
+    var read: Bool
         
     init(id: String, image: String, link: String?, read: Bool = false) {
         self.id = id
@@ -23,7 +23,5 @@ struct CampaignItem: Identifiable {
 }
 
 extension CampaignItem: Equatable {
-    static func == (lhs: CampaignItem, rhs: CampaignItem) -> Bool {
-        return lhs.id == rhs.id
-    }
+    
 }
