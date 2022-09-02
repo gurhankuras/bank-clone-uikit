@@ -72,6 +72,11 @@ class LanguageSelectionViewController: UIViewController {
         transitioningDelegate = loginTransitionDelegate
 
     }
+    
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
