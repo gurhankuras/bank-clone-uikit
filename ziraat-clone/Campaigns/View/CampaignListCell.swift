@@ -47,6 +47,7 @@ class CampaignListCell: UICollectionViewCell {
     }
     
     func configure(with item: CampaignViewModel) {
+        self.item = item
         imageView.image = UIImage(named: item.image)
         imageView.layer.borderColor = item.read ? UIColor.lightGray.cgColor : UIColor.white.cgColor
     }

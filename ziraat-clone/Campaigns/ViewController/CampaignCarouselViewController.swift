@@ -47,6 +47,8 @@ class CampaignCarouselViewController: UIPageViewController {
         delegate = self
         if let startIndex = items.firstIndex(of: startItem) {
             pageIndex = startIndex
+        } else {
+            fatalError("startItem is not one of the items has been passed")
         }
         setViewControllers([makeSlide(with: startItem)], direction: .forward, animated: false)
     }
@@ -69,7 +71,7 @@ class CampaignCarouselViewController: UIPageViewController {
         self.pageIndex += 1
     }
     
-    func campaignItem(for viewController: UIViewController) -> CampaignViewModel? {
+    private func campaignItem(for viewController: UIViewController) -> CampaignViewModel? {
         let campaignVc = viewController as? CampaignCarouselSlide
         return campaignVc?.item
     }
@@ -86,10 +88,10 @@ extension CampaignCarouselViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         Self.logger.debug("\(#function)")
-        guard let item = campaignItem(for: viewController),
-              let currentIndex = items.firstIndex(of: item) else { return nil }
+        guard let currentItem = campaignItem(for: viewController),
+              let currentIndex = items.firstIndex(of: currentItem) else { return nil }
         pageIndex = currentIndex
-        onNext?(item)
+        onNext?(currentItem)
         if currentIndex == 0 {
             return nil
         }

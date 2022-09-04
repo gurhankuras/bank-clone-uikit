@@ -7,26 +7,17 @@
 
 import Foundation
 
-protocol AppLanguageChanging {
-    func `set`(to language: Language)
-}
-
-protocol AppLanguageApplying {
-    func applyCurrent()
-}
-
-protocol AppLanguageProviding {
+protocol LanguageService {
     var currentLanguage: Language { get }
+    func applyCurrent()
+    func `set`(to newLanguage: Language)
 }
 
-typealias AppLanguageUser = AppLanguageChanging & AppLanguageApplying & AppLanguageProviding
+class AppLanguageService: LanguageService {
+    private let fallback: Language = .tr
 
-class AppLanguageService: AppLanguageUser {
-    private let key = "selectedLanguage"
-    private let defaultLanguage: Language = .tr
-
-    func set(to language: Language) {
-        UserDefaults.standard.set(language.rawValue, forKey: key)
+    func set(to newLanguage: Language) {
+        UserDefaults.standard.set(newLanguage.rawValue, forKey: Keys.selectedLanguage.rawValue)
     }
 
     func applyCurrent() {
@@ -34,15 +25,23 @@ class AppLanguageService: AppLanguageUser {
     }
 
     var currentLanguage: Language {
-        if let persistedLanguage = UserDefaults.standard.string(forKey: key) {
-            return Language(rawValue: persistedLanguage) ?? defaultLanguage
+        if let persistedLang = UserDefaults.standard.string(forKey: Keys.selectedLanguage.rawValue) {
+            return Language(rawValue: persistedLang) ?? fallback
         }
-        if let preferredLanguages = UserDefaults.standard.stringArray(forKey: "AppleLanguages"),
-           let systemLanguage = preferredLanguages.first {
-            return Language(rawValue: systemLanguage) ?? defaultLanguage
+        if let systemLanguages = UserDefaults.standard.stringArray(forKey: Keys.systemLanguages.rawValue),
+           let preferredLang = systemLanguages.first {
+            return Language(rawValue: preferredLang) ?? fallback
         }
 
-        return defaultLanguage
+        return fallback
+    }
+}
+
+// MARK: Keys
+extension AppLanguageService {
+    enum Keys: String {
+        case selectedLanguage
+        case systemLanguages = "AppleLanguages"
     }
 }
 

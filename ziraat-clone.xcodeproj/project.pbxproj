@@ -33,6 +33,10 @@
 		22001BB328C25B6D0057D6A5 /* CampaignUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BB228C25B6D0057D6A5 /* CampaignUpdates.swift */; };
 		22001BB528C25C410057D6A5 /* CampaignCacheRemoteSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BB428C25C410057D6A5 /* CampaignCacheRemoteSynchronizer.swift */; };
 		22001BB928C25C7D0057D6A5 /* CampaignCacheRemoteSynchronizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BB828C25C7D0057D6A5 /* CampaignCacheRemoteSynchronizerTests.swift */; };
+		22001BBB28C3727F0057D6A5 /* PersistentContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BBA28C3727F0057D6A5 /* PersistentContainerFactory.swift */; };
+		22001BBD28C3804D0057D6A5 /* CampaignCollectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BBC28C3804D0057D6A5 /* CampaignCollectionViewModelTests.swift */; };
+		22001BBF28C3C1120057D6A5 /* CampaignListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BBE28C3C1120057D6A5 /* CampaignListViewControllerTests.swift */; };
+		22001BC128C3CB280057D6A5 /* CampaignCarouselViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22001BC028C3CB280057D6A5 /* CampaignCarouselViewControllerTests.swift */; };
 		2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */; };
 		2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */; };
 		2222F46228AF9AE800C1CEBD /* AccountHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222F46128AF9AE800C1CEBD /* AccountHolder.swift */; };
@@ -135,6 +139,10 @@
 		22001BB228C25B6D0057D6A5 /* CampaignUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignUpdates.swift; sourceTree = "<group>"; };
 		22001BB428C25C410057D6A5 /* CampaignCacheRemoteSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCacheRemoteSynchronizer.swift; sourceTree = "<group>"; };
 		22001BB828C25C7D0057D6A5 /* CampaignCacheRemoteSynchronizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCacheRemoteSynchronizerTests.swift; sourceTree = "<group>"; };
+		22001BBA28C3727F0057D6A5 /* PersistentContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerFactory.swift; sourceTree = "<group>"; };
+		22001BBC28C3804D0057D6A5 /* CampaignCollectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCollectionViewModelTests.swift; sourceTree = "<group>"; };
+		22001BBE28C3C1120057D6A5 /* CampaignListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignListViewControllerTests.swift; sourceTree = "<group>"; };
+		22001BC028C3CB280057D6A5 /* CampaignCarouselViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCarouselViewControllerTests.swift; sourceTree = "<group>"; };
 		2222F45028AF909300C1CEBD /* ziraat-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ziraat-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControllerTests.swift; sourceTree = "<group>"; };
 		2222F45D28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSheetTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +332,9 @@
 				224EA7B328B5711A0028A91B /* LoginButtonTests.swift */,
 				22001BA728C2116E0057D6A5 /* CampaignCoreDataStoreTests.swift */,
 				22001BB828C25C7D0057D6A5 /* CampaignCacheRemoteSynchronizerTests.swift */,
+				22001BBC28C3804D0057D6A5 /* CampaignCollectionViewModelTests.swift */,
+				22001BBE28C3C1120057D6A5 /* CampaignListViewControllerTests.swift */,
+				22001BC028C3CB280057D6A5 /* CampaignCarouselViewControllerTests.swift */,
 			);
 			path = "ziraat-cloneTests";
 			sourceTree = "<group>";
@@ -458,6 +469,7 @@
 			children = (
 				224EA7A828B2EB9D0028A91B /* MainFlow.swift */,
 				22001B3E28BF44D10057D6A5 /* CarouselFlow.swift */,
+				22001BBA28C3727F0057D6A5 /* PersistentContainerFactory.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -659,8 +671,11 @@
 			files = (
 				2222F46628AFB53400C1CEBD /* LoginViewModelTests.swift in Sources */,
 				224EA7AE28B2EF780028A91B /* FactoryTests.swift in Sources */,
+				22001BC128C3CB280057D6A5 /* CampaignCarouselViewControllerTests.swift in Sources */,
+				22001BBF28C3C1120057D6A5 /* CampaignListViewControllerTests.swift in Sources */,
 				22001BA828C2116E0057D6A5 /* CampaignCoreDataStoreTests.swift in Sources */,
 				2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */,
+				22001BBD28C3804D0057D6A5 /* CampaignCollectionViewModelTests.swift in Sources */,
 				224EA7A628B2E5130028A91B /* MainFlowTests.swift in Sources */,
 				224EA7B428B5711A0028A91B /* LoginButtonTests.swift in Sources */,
 				22001BB928C25C7D0057D6A5 /* CampaignCacheRemoteSynchronizerTests.swift in Sources */,
@@ -733,6 +748,7 @@
 				224A4B9E2892E0AE00FB4DDB /* SceneDelegate.swift in Sources */,
 				22001BAF28C21E200057D6A5 /* CampaignEntity+CoreDataProperties.swift in Sources */,
 				22001B4C28BF84F30057D6A5 /* CampaignAPI.swift in Sources */,
+				22001BBB28C3727F0057D6A5 /* PersistentContainerFactory.swift in Sources */,
 				224EA7C728B94B130028A91B /* LanguageButton.swift in Sources */,
 				224EA7AC28B2EBC30028A91B /* Factory.swift in Sources */,
 			);

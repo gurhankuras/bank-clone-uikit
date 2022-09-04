@@ -21,9 +21,9 @@ class LanguageViewModel {
             didSelectLanguage?(selectedLanguage)
         }
     }
-    let languageService: AppLanguageUser
+    let languageService: LanguageService
 
-    init(languageService: AppLanguageUser) {
+    init(languageService: LanguageService) {
         self.languageService = languageService
         selectedLanguage = languageService.currentLanguage
     }
