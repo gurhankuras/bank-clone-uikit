@@ -8,14 +8,15 @@
 import XCTest
 @testable import ziraat_clone
 
-class FactoryTests: XCTestCase {
+class ViewControllerFactoryTests: XCTestCase {
     func test_makeHomeViewController_setsCallbacks() throws {
         let vc = Factory.makeHomeViewController(onExit: {}) as! HomePageViewController
         XCTAssertNotNil(vc.onExit)
     }
 
     func test_makeLandingViewController_setsCallbacks() throws {
-        let vc = Factory.makeLandingViewController(language: .en, loginButtonPressed: {}, onLanguagePressed: {}, campaignsViewController: CampaignListViewController())
+        let vc = Factory.makeLandingViewController(language: .en, loginButtonPressed: {},
+                                                   onLanguagePressed: {}, campaignsViewController: CampaignListViewController())
         XCTAssertNotNil(vc.onLoginPressed)
         XCTAssertNotNil(vc.onLanguagePressed)
     }

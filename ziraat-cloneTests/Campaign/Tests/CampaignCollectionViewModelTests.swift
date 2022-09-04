@@ -57,7 +57,6 @@ class CampaignCollectionViewModelTests: XCTestCase {
         XCTAssertNotEqual(oldItems.map(\.read), viewModel.campaignViewModels.map(\.read))
     }
     
-    
 }
 
 // MARK: load()
@@ -85,20 +84,3 @@ extension CampaignCollectionViewModelTests {
     }
 }
 
-struct DummyCampaignProvider: CampaignProvider {
-    func campaigns(completion: @escaping ([CampaignItem]) -> Void) {
-        completion([])
-    }
-}
-
-struct CampaignProviderStub: CampaignProvider {
-    let stubs: [CampaignItem]
-
-    init(_ stubs: [CampaignItem]) {
-        self.stubs = stubs
-    }
-    
-    func campaigns(completion: @escaping ([CampaignItem]) -> Void) {
-        completion(stubs)
-    }
-}

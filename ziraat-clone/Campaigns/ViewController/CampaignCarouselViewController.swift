@@ -18,7 +18,7 @@ class CampaignCarouselViewController: UIPageViewController {
             print(pageIndex)
         }
     }
-    
+    var durationPerSlide: TimeInterval = 8
     var items: [CampaignViewModel] = []
     var startItem: CampaignViewModel!
 
@@ -28,10 +28,11 @@ class CampaignCarouselViewController: UIPageViewController {
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
     }
 
-    convenience init(items: [CampaignViewModel], startItem: CampaignViewModel) {
+    convenience init(items: [CampaignViewModel], startItem: CampaignViewModel, durationPerSlide: TimeInterval) {
         self.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
         self.startItem = startItem
         self.items = items
+        self.durationPerSlide = durationPerSlide
     }
     
     required init?(coder: NSCoder) {
@@ -77,7 +78,7 @@ class CampaignCarouselViewController: UIPageViewController {
     }
     
     func makeSlide(with item: CampaignViewModel) -> CampaignCarouselSlide {
-        let slide = CampaignCarouselSlide(item: item, onTimeout: { [weak self] in self?.handleTimeout() })
+        let slide = CampaignCarouselSlide(item: item, duration: durationPerSlide, onTimeout: { [weak self] in self?.handleTimeout() })
         slide.onExit = { [weak self] in self?.onExit?() }
         return slide
     }

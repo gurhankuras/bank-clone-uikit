@@ -7,38 +7,47 @@
 
 import Foundation
 
-protocol LanguageService {
-    var currentLanguage: Language { get }
-    func applyCurrent()
-    func `set`(to newLanguage: Language)
-}
+class LanguageService: LocalizationService {
+    
+    private let fallback: LocalizationLanguage
+    let keyValueStore: KeyValueStore
 
-class AppLanguageService: LanguageService {
-    private let fallback: Language = .tr
+    init(keyValueStore: KeyValueStore, fallbackLanguage: LocalizationLanguage = .tr) {
+        self.keyValueStore = keyValueStore
+        self.fallback = fallbackLanguage
+    }
 
-    func set(to newLanguage: Language) {
-        UserDefaults.standard.set(newLanguage.rawValue, forKey: Keys.selectedLanguage.rawValue)
+    func set(to newLanguage: LocalizationLanguage) {
+        keyValueStore.set(newLanguage.rawValue, forKey: Keys.selectedLanguage.rawValue)
     }
 
     func applyCurrent() {
         Bundle.setLanguage(currentLanguage.rawValue.lowercased())
     }
 
-    var currentLanguage: Language {
-        if let persistedLang = UserDefaults.standard.string(forKey: Keys.selectedLanguage.rawValue) {
-            return Language(rawValue: persistedLang) ?? fallback
+    var currentLanguage: LocalizationLanguage {
+        if let persistedLang = keyValueStore.string(forKey: Keys.selectedLanguage.rawValue) {
+            return languageOrFail(for: persistedLang)
         }
-        if let systemLanguages = UserDefaults.standard.stringArray(forKey: Keys.systemLanguages.rawValue),
+        if let systemLanguages = keyValueStore.stringArray(forKey: Keys.systemLanguages.rawValue),
            let preferredLang = systemLanguages.first {
-            return Language(rawValue: preferredLang) ?? fallback
+            return languageOrFail(for: preferredLang)
         }
 
         return fallback
     }
+    
+    private func languageOrFail(for rawValue: LocalizationLanguage.RawValue) -> LocalizationLanguage {
+        guard let language = LocalizationLanguage(rawValue: rawValue) else {
+            fatalError("Unsupported language. This is a development bug")
+        }
+        return language
+    }
+    
 }
 
 // MARK: Keys
-extension AppLanguageService {
+extension LanguageService {
     enum Keys: String {
         case selectedLanguage
         case systemLanguages = "AppleLanguages"

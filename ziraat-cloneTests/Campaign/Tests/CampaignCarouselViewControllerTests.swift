@@ -13,7 +13,7 @@ class CampaignCarouselViewControllerTests: XCTestCase {
     func test_CampaignCarouselViewController_startsWithInitialState() throws {
         let items = stubs
         let startItem = items[1]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         
         XCTAssertEqual(sut.startItem, startItem)
         XCTAssertEqual(items, sut.items)
@@ -24,7 +24,7 @@ class CampaignCarouselViewControllerTests: XCTestCase {
         let items = stubs
         let index = 2
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         let slide = currentSlide(in: sut)
@@ -40,7 +40,7 @@ extension CampaignCarouselViewControllerTests {
         let items = stubs
         let index = 0
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         var closesCarousel = false
@@ -59,7 +59,7 @@ extension CampaignCarouselViewControllerTests {
         let items = stubs
         let index = 0
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         var carouselClosed = false
@@ -78,7 +78,7 @@ extension CampaignCarouselViewControllerTests {
         let items = stubs
         let index = 0
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         var moveCount = 0
@@ -95,7 +95,7 @@ extension CampaignCarouselViewControllerTests {
         let items = stubs
         let index = 0
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         var carouselClosed = false
@@ -121,7 +121,7 @@ extension CampaignCarouselViewControllerTests {
         let items = stubs
         let index = 0
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         let slide = sut.makeSlide(with: startItem)
@@ -135,7 +135,7 @@ extension CampaignCarouselViewControllerTests {
         let items = stubs
         let index = stubs.count - 1
         let startItem = items[index]
-        let sut = CampaignCarouselViewController(items: items, startItem: startItem)
+        let sut = CampaignCarouselViewController(items: items, startItem: startItem, durationPerSlide: 0)
         _ = sut.view
         
         let slide = sut.makeSlide(with: startItem)

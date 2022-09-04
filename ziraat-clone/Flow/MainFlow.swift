@@ -50,8 +50,8 @@ class MainFlow {
         return container
     }()
     lazy var campaignStore = CampaignCoreDataStore(container: self.persistentContainer)
-    lazy var languageViewModel = LanguageViewModel(languageService: languageChanger)
-    lazy var languageChanger: LanguageService = AppLanguageService()
+    lazy var languageViewModel = LocalizationViewModel(languageService: languageChanger)
+    lazy var languageChanger: LocalizationService = LanguageService(keyValueStore: UserDefaults.standard)
     
     deinit { log_deinit(Self.self) }
     
@@ -70,7 +70,7 @@ class MainFlow {
         navigationController.setViewControllers([vc], animated: true)
     }
     
-    private func rootViewController(in language: Language) -> UIViewController {
+    private func rootViewController(in language: LocalizationLanguage) -> UIViewController {
         let loginCallback: () -> Void = { [weak self] in self?.showLoginSheet() }
         let languageCallback: () -> Void = { [weak self] in self?.presentLanguageSelectionSheet() }
                 

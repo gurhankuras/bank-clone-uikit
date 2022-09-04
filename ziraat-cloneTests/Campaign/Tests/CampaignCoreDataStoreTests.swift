@@ -50,7 +50,6 @@ class CampaignCoreDataStoreTests: XCTestCase {
         
         try sut.update(with: [updatedItem], deleting: [])
         
-        
         var allItems = try sut.getAll()
         let fetchedItem = try XCTUnwrap(allItems.first)
         
@@ -136,22 +135,6 @@ class CampaignCoreDataStoreTests: XCTestCase {
 }
 
 extension CampaignCoreDataStoreTests {
-    /*
-     
-     func markAsRead(_ id: CampaignItem.ID) throws {
-         try context.performAndWait {
-             let request = CampaignEntity.fetchRequest()
-             request.predicate = NSPredicate(format: "id == %@", id)
-             let campaigns = try context.fetch(request)
-             guard let first = campaigns.first else {
-                 return
-             }
-             print(first)
-             first.read = true
-             try self.saveIfNeeded()
-         }
-     }
-     */
     func test_markAsRead_setsReadToTrue() throws {
         let sut = try makeSut(startsWith: stubs)
         let willMarkedItem = CampaignItem(id: "1", image: "image", link: nil, read: false)

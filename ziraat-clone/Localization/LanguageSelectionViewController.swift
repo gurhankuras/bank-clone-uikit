@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class LanguageSelectionViewController: UIViewController {
-    var didSelectLanguage: ((Language) -> Void)?
-    var viewModel: LanguageViewModel!
+    var didSelectLanguage: ((LocalizationLanguage) -> Void)?
+    var viewModel: LocalizationViewModel!
     private var languageButtons: [LanguageButton] = []
 
     lazy var loginTransitionDelegate: LanguageSelectionTransitionDelegate = {
@@ -21,10 +21,10 @@ class LanguageSelectionViewController: UIViewController {
         return loginTransitionDelegate
     }()
 
-    private func languageButton(with language: Language) -> LanguageButton {
+    private func languageButton(with language: LocalizationLanguage) -> LanguageButton {
         let button = LanguageButton(language: language)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(language.rawValue, for: .normal)
+        button.setTitle(language.rawValue.uppercased(), for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .footnote).bold()
         button.backgroundColor = .primary
         button.layer.cornerRadius = 5
@@ -123,7 +123,7 @@ class LanguageSelectionViewController: UIViewController {
         }
     }
 
-    private func updateButtons(with language: Language) {
+    private func updateButtons(with language: LocalizationLanguage) {
         languageButtons.forEach { button in
             button.isSelected = button.language == language
         }
