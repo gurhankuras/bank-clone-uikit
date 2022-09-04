@@ -42,7 +42,8 @@ class CarouselFlow: Flow {
     }
     
     func showCarousel() {
-        let vc = CampaignCarouselViewController(items: items, startItem: startItem)
+        let vc = CampaignCarouselViewController(items: items,
+                                                startItem: startItem, durationPerSlide: 8)
         vc.onExit = { [weak self] in
             self?.navigationController.popViewController(animated: true)
             self?.cleanUp?()

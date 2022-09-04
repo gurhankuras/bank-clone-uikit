@@ -10,7 +10,7 @@ import SnapKit
 
 class LandingViewController: UIViewController {
     var campaigns: CampaignListViewController?
-    var language: Language!
+    var language: LocalizationLanguage!
     var onLoginPressed: (() -> Void)?
     var onLanguagePressed: (() -> Void)?
     var accountHolder: AccountHolder?
@@ -21,7 +21,7 @@ class LandingViewController: UIViewController {
         log_deinit(Self.self)
     }
     
-    convenience init(accountHolder: AccountHolder, language: Language) {
+    convenience init(accountHolder: AccountHolder, language: LocalizationLanguage) {
         self.init(nibName: nil, bundle: nil)
         self.accountHolder = accountHolder
         self.language = language

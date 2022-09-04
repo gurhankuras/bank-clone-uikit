@@ -12,7 +12,7 @@ import SafariServices
 
 class CampaignCarouselSlide: UIViewController {
     var item: CampaignViewModel!
-    let duration: TimeInterval = 2.0
+    var duration: TimeInterval = 2
     var onTimeout: (() -> Void)?
     var onExit: (() -> Void)?
     
@@ -26,10 +26,11 @@ class CampaignCarouselSlide: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(item: CampaignViewModel, onTimeout: (() -> Void)?) {
+    convenience init(item: CampaignViewModel, duration: TimeInterval, onTimeout: (() -> Void)?) {
         self.init(nibName: nil, bundle: nil)
         self.item = item
         self.onTimeout = onTimeout
+        self.duration = duration
     }
     
     required init?(coder: NSCoder) {
@@ -186,7 +187,7 @@ struct CampaignPageViewControllerSlide_Preview: PreviewProvider {
     static var previews: some View {
         UIViewControllerPreview {
             let vm = CampaignViewModel(id: "1", image: "kampanya", link: "", read: false)
-            let vc = CampaignCarouselSlide(item: vm, onTimeout: {})
+            let vc = CampaignCarouselSlide(item: vm, duration: 2, onTimeout: {})
             return vc
         }
         .ignoresSafeArea()

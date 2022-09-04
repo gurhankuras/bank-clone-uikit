@@ -29,7 +29,7 @@ class Factory {
         return homeVc
     }
 
-    static func makeLandingViewController(language: Language,
+    static func makeLandingViewController(language: LocalizationLanguage,
                                           loginButtonPressed: @escaping () -> Void,
                                           onLanguagePressed: @escaping () -> Void,
                                           campaignsViewController: CampaignListViewController) -> LandingViewController {

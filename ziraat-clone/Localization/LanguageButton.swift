@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class LanguageButton: UIButton {
-    var language: Language!
+    var language: LocalizationLanguage!
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -30,7 +30,7 @@ class LanguageButton: UIButton {
         super.init(frame: frame)
     }
 
-    convenience init(language: Language) {
+    convenience init(language: LocalizationLanguage) {
         self.init(frame: .zero)
         self.language = language
         setTitleColor(.black, for: .normal)

@@ -123,38 +123,3 @@ extension CampaignCacheRemoteSynchronizerTests {
         ]
     }
 }
-
-class CampaignStoreSpy: CampaignStore {
-    func markAsRead(_ id: CampaignItem.ID) throws {
-        idsMarkedAsRead.append(id)
-    }
-    
-    private(set) var newItemsList: [[CampaignItem]] = []
-    private(set) var deleteIds: [[CampaignItem.ID]] = []
-    private(set) var idsMarkedAsRead: [CampaignItem.ID] = []
-    
-    func update(with newItems: [CampaignItem], deleting ids: [CampaignItem.ID]) throws {
-        newItemsList.append(newItems)
-        deleteIds.append(ids)
-    }
-    
-    func getAll() throws -> [CampaignItem] {
-        return []
-    }
-}
-
-class CampaignTrackerStub: CampaignTracker {
-    var stubResults: [Result<CampaignUpdates, Error>]
-    
-    init(stubResults: [Result<CampaignUpdates, Error>] = []) {
-        self.stubResults = stubResults
-    }
-    func campaigns(completion: @escaping (Result<CampaignUpdates, Error>) -> Void) {
-        guard !stubResults.isEmpty else {
-            fatalError("There is no stubbed result left!")
-        }
-        let result = stubResults.remove(at: 0)
-        completion(result)
-    }
-}
-

@@ -9,10 +9,10 @@ import XCTest
 @testable import ziraat_clone
 
 class CampaignListViewControllerTests: XCTestCase {
-    
     var stub: CampaignViewModel {
         .init(id: "1", image: "image", link: nil, read: false)
     }
+    
     func makeViewModel() -> (CampaignCollectionViewModel, CampaignStoreSpy) {
         let dummyProvider = DummyCampaignProvider()
         let storeSpy = CampaignStoreSpy()

@@ -99,14 +99,4 @@ private extension LoginViewModel.Result {
     }
 }
 
-class LoginSpy {
-    private(set) var results: [LoginViewModel.Result<Error>]
 
-    init(results: [LoginViewModel.Result<Error>] = []) {
-        self.results = results
-
-    }
-    func callback(_ result: LoginViewModel.Result<Error>) {
-        results.append(result)
-    }
-}
