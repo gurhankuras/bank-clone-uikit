@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class CampaignListViewController: UIViewController {
+    typealias CellType = CampaignListCell
+    
     var collectionView: UICollectionView!
     var onCampaignSelected: ((CampaignViewModel) -> Void)?
 
@@ -22,7 +24,8 @@ class CampaignListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareCollectionView()
-        viewModel.onCampaignsChanged = { [weak self] _ in
+        viewModel.onCampaignsChanged = { [weak self] items in
+            print(items)
             self?.collectionView.reloadData()
         }
         view.addSubview(collectionView)
@@ -37,8 +40,8 @@ class CampaignListViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(CampaignListCell.self,
-                                forCellWithReuseIdentifier: CampaignListCell.identifier)
+        collectionView.register(CellType.self,
+                                forCellWithReuseIdentifier: CellType.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
@@ -62,7 +65,7 @@ extension CampaignListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = viewModel.campaignViewModels[indexPath.row]
         self.onCampaignSelected?(item)
-        viewModel.markAsRead(id: item.id)
+        viewModel.markAsReadIfNeeded(item)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -80,7 +83,7 @@ extension CampaignListViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CampaignListCell.identifier, for: indexPath)
-                as? CampaignListCell else {
+                as? CellType else {
             fatalError()
         }
         cell.configure(with: viewModel.campaignViewModels[indexPath.row])

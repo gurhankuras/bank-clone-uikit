@@ -8,17 +8,18 @@
 import Foundation
 
 class CampaignCollectionViewModel {
+    let provider: CampaignProvider
+    let store: CampaignStore
     var campaignViewModels: [CampaignViewModel] = [] {
         didSet {
             onCampaignsChanged?(campaignViewModels)
         }
     }
-    
     var onCampaignsChanged: (([CampaignViewModel]) -> Void)?
-    let provider: CampaignProvider
     
-    init(provider: CampaignProvider) {
+    init(provider: CampaignProvider, store: CampaignStore) {
         self.provider = provider
+        self.store = store
     }
     
     func load() {
@@ -27,15 +28,18 @@ class CampaignCollectionViewModel {
         })
     }
     
-    func markAsRead(id: CampaignViewModel.ID) {
-        let filtered: [CampaignViewModel] = self.campaignViewModels.map({ item in
-            if id == item.id {
-                var copy = item
-                copy.read = true
-                return copy
-            }
-            return item
-        })
-        self.campaignViewModels = filtered
+    func markAsReadIfNeeded(_ item: CampaignViewModel) {
+        guard !item.read else { return }
+        let id = item.id
+        guard let _ = try? store.markAsRead(id) else {
+            fatalError("Marking as Viewed Failed due to store!")
+        }
+        
+        if let index = self.campaignViewModels.firstIndex(where: { $0.id == id }) {
+            campaignViewModels[index].read = true
+        }
     }
+    
+    // private func update
+
 }

@@ -13,8 +13,17 @@ class CampaignCacheRemoteSynchronizerTests: XCTestCase {
     struct AnyError: Error {}
     typealias Response = Result<CampaignUpdates, Error>
     
+    func makeStore(startsWith items: [CampaignItem] = []) throws -> CampaignCoreDataStore {
+        let container = PersistentContainerFactory.create(of: .inMemory)
+        let store = CampaignCoreDataStore(container: container)
+        try items.forEach { item in
+            try store.add(item)
+        }
+        return store
+    }
+    
     func test_shouldSaveNewCampaignsToStore_whenResponseIsSuccess() throws {
-        let store = CampaignStoreStub(items: [:])
+        let store = try makeStore()
         let responses: [Response] = [
             .success(.init(active: [CampaignItem(id: "1", image: "gurhan", link: nil)],
                            deleted: [], version: "1"))
@@ -23,13 +32,34 @@ class CampaignCacheRemoteSynchronizerTests: XCTestCase {
         let sut = CampaignCacheRemoteSynchronizer(store: store, remote: remote)
         
         sut.campaigns { _ in }
+    
+        XCTAssertEqual(try store.getAll().count, 1)
+    }
+    
+    func test_shouldReturnMergedItems_whenResponseIsSuccess() throws {
         
-        let count = try store.getAll().count
-        XCTAssertEqual(count, 1)
+        let itemInStore = CampaignItem(id: "1", image: "gurhan", link: nil, read: true)
+        let store = try makeStore(startsWith: [itemInStore])
+        
+        var itemInResponse = itemInStore
+        itemInResponse.read = false
+        let responses: [Response] = [
+            .success(.init(active: [itemInResponse],
+                           deleted: [], version: "1"))
+        ]
+        let remote = CampaignTrackerStub(stubResults: responses)
+        let sut = CampaignCacheRemoteSynchronizer(store: store, remote: remote)
+        
+        var actives: [CampaignItem]?
+        sut.campaigns {
+            actives = $0
+        }
+        
+        XCTAssertEqual(actives?.first, itemInStore)
     }
     
     func test_shouldNotSaveAnyCampaignsToStore_whenResponseIsFailure() throws {
-        let store = CampaignStoreStub(items: [:])
+        let store = try makeStore()
         let responses: [Response] = [
             .failure(AnyError())
         ]
@@ -45,7 +75,8 @@ class CampaignCacheRemoteSynchronizerTests: XCTestCase {
     
     func test_shouldReturnExistingCampaignsFromCache_whenResponseIsFailure() throws {
         let campaignStub = try XCTUnwrap(stubs.first)
-        let store = CampaignStoreStub(items: ["1": campaignStub])
+        let store = try makeStore(startsWith: [campaignStub])
+        
         let responses: [Response] = [
             .failure(AnyError())
         ]
@@ -61,7 +92,7 @@ class CampaignCacheRemoteSynchronizerTests: XCTestCase {
     }
     
     func test_shouldPassParametersCorrectlyToStore_whenResponseIsSuccess() throws {
-        let store = CampaignStoreStub(items: [:])
+        let store = CampaignStoreSpy()
         
         let idsToDelete = ["2", "3"]
         let activeItems = [stubs.first!]
@@ -93,33 +124,22 @@ extension CampaignCacheRemoteSynchronizerTests {
     }
 }
 
-class CampaignStoreStub: CampaignStore {
+class CampaignStoreSpy: CampaignStore {
+    func markAsRead(_ id: CampaignItem.ID) throws {
+        idsMarkedAsRead.append(id)
+    }
+    
     private(set) var newItemsList: [[CampaignItem]] = []
     private(set) var deleteIds: [[CampaignItem.ID]] = []
+    private(set) var idsMarkedAsRead: [CampaignItem.ID] = []
     
-    init(items: [CampaignItem.ID: CampaignItem] = [:]) {
-        self.items = items
-    }
-    
-    var items: [CampaignItem.ID: CampaignItem]
     func update(with newItems: [CampaignItem], deleting ids: [CampaignItem.ID]) throws {
-        audit(with: newItems, deleting: ids)
-        for item in newItems {
-            items[item.id] = item
-        }
-        
-        ids.forEach { id in
-            items.removeValue(forKey: id)
-        }
-    }
-    
-    private func audit(with newItems: [CampaignItem], deleting ids: [CampaignItem.ID]) {
         newItemsList.append(newItems)
         deleteIds.append(ids)
     }
     
     func getAll() throws -> [CampaignItem] {
-        return items.values.map { $0 }
+        return []
     }
 }
 

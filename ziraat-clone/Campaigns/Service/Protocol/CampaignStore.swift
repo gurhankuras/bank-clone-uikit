@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 
-
 enum CampaignEntityMapper {
     static func map(_ entity: CampaignEntity) -> CampaignItem? {
         guard let id = entity.id,
@@ -21,39 +20,29 @@ enum CampaignEntityMapper {
 protocol CampaignStore {
     func update(with newItems: [CampaignItem], deleting ids: [CampaignItem.ID]) throws
     func getAll() throws -> [CampaignItem]
+    func markAsRead(_ id: CampaignItem.ID) throws
 }
 
 class CampaignCoreDataStore: CampaignStore {
-    func update(with newItems: [CampaignItem], deleting ids: [CampaignItem.ID]) throws {
-        let deleteRequest = batchDeleteRequest(with: ids)
-        try insertBatch(with: newItems)
-        try context.execute(deleteRequest)
-        try saveIfNeeded()
+    public enum CampaignStoreError: Error {
+        case campaignNotFound
+    }
+    func markAsRead(_ id: CampaignItem.ID) throws {
+        try context.performAndWait {
+            let request = CampaignEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", id)
+            let campaigns = try context.fetch(request)
+            guard let first = campaigns.first else {
+                throw CampaignStoreError.campaignNotFound
+            }
+            dump(first)
+            first.read = true
+            try self.saveIfNeeded()
+        }
     }
     
-    private func batchDeleteRequest(with idsToDelete: [CampaignItem.ID]) -> NSPersistentStoreRequest {
-        let predicate = NSPredicate(format: "id IN %@", idsToDelete)
-        let request: NSFetchRequest<NSFetchRequestResult> = CampaignEntity.fetchRequest()
-        request.predicate = predicate
-        let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
-        return batchRequest
-    }
-    
-    private func insertBatch(with items: [CampaignItem]) throws {
-        if items.isEmpty {
-            return
-        }
-        let dicts = items.map { item in
-            return [
-                "id": item.id,
-                "link": item.link as Any,
-                "image": item.image,
-                "read": item.read
-            ]
-        }
-        let insertRequest = NSBatchInsertRequest(entity: CampaignEntity.entity(), objects: dicts)
-        try context.execute(insertRequest)
-    }
+    private let container: NSPersistentContainer
+    private let context: NSManagedObjectContext!
     
     init(container: NSPersistentContainer) {
         self.container = container
@@ -61,29 +50,101 @@ class CampaignCoreDataStore: CampaignStore {
         self.context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
-    let container: NSPersistentContainer
-    let context: NSManagedObjectContext!
-    
-    func getAll() throws -> [CampaignItem] {
-        let request = CampaignEntity.fetchRequest()
-        let campaigns = try context.fetch(request)
-        return campaigns.compactMap({ CampaignEntityMapper.map($0) })
+    func update(with newItems: [CampaignItem], deleting ids: [CampaignItem.ID]) throws {
+        try context.performAndWait {
+            let deleteRequest = batchDeleteRequest(with: ids)
+            try mergeItems(with: newItems)
+            try context.execute(deleteRequest)
+        }
     }
     
+    private func batchDeleteRequest(with idsToDelete: [CampaignItem.ID]) -> NSPersistentStoreRequest {
+        let predicate = NSPredicate(format: "id IN %@", idsToDelete)
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CampaignEntity")
+        request.predicate = predicate
+        let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
+        return batchRequest
+    }
+    
+    func mergeItems(with items: [CampaignItem]) throws {
+        if items.isEmpty {
+            return
+        }
+        
+        try context.performAndWait {
+            let fetchRequest = CampaignEntity.fetchRequest()
+            let campaigns = try context.fetch(fetchRequest)
+            
+            var mm = [String: CampaignEntity]()
+            campaigns.forEach({
+                guard let id = $0.id else { return }
+                mm[id] = $0
+            })
+            
+            let dicts = items.map { item in
+                return [
+                    "id": item.id,
+                    "link": item.link as Any,
+                    "image": item.image,
+                    "read": mm[item.id]?.read ?? item.read
+                ]
+            }
+            
+            let insertRequest = NSBatchInsertRequest(entity: CampaignEntity.entity(), objects: dicts)
+            try context.execute(insertRequest)
+        }
+        
+        
+        
+        /*
+        var idMap: Dictionary<String, [String: Any]> = [:]
+        dicts.forEach { map in
+            guard let id = map["id"] as? String else {
+                return
+            }
+            idMap[id] = map
+        }
+        
+        try context.performAndWait {
+            let fetchRequest = CampaignEntity.fetchRequest()
+            // fetchRequest.propertiesToFetch = ["read", "id"]
+            let campaigns = try context.fetch(fetchRequest)
+            for campaign in campaigns {
+                guard let id = campaign.id,
+                      var item = idMap[id] else { continue }
+                item["read"] = campaign.read
+                idMap[id] = item
+                print("\(campaign.id): \(campaign.read)")
+            }
+            
+            let insertRequest = NSBatchInsertRequest(entity: CampaignEntity.entity(), objects: idMap.values.map({ $0 }))
+            try context.execute(insertRequest)
+        }
+         */
+    }
+    
+  
+    
+    func getAll() throws -> [CampaignItem] {
+        return try context.performAndWait {
+            let request = CampaignEntity.fetchRequest()
+            let campaigns = try context.fetch(request)
+            return campaigns.compactMap({ CampaignEntityMapper.map($0) })
+        }
+    }
     
     func add(_ campaign: CampaignItem) throws {
         guard let entityDesc  = NSEntityDescription.entity(forEntityName: "CampaignEntity", in: self.context) else {
             return
         }
         let campaignEntity = CampaignEntity(entity: entityDesc, insertInto: self.context)
-        campaignEntity.read = false
+        campaignEntity.read = campaign.read
         campaignEntity.id = campaign.id
         campaignEntity.link = campaign.link
         campaignEntity.image = campaign.image
         try self.saveIfNeeded()
     }
      
-    
     @discardableResult
     func saveIfNeeded() throws -> Bool {
         guard context.hasChanges else { return false }

@@ -37,18 +37,18 @@ class CampaignAPI: CampaignTracker {
     
     func campaigns(completion: @escaping (Result<CampaignUpdates, Error>) -> Void) {
         versionProvider.version = updates.version
-        completion(.failure(URLError.init(.cancelled)))
-        // completion(.success(updates))
+        // completion(.failure(URLError.init(.cancelled)))
+        completion(.success(updates))
     }
     
     var updates: CampaignUpdates {
         return
         CampaignUpdates(active: [
-           /*
+           
             CampaignItem(id: "1",
                          image: "kampanya2",
-                         link: "https://www.ziraatbank.com.tr/tr/bankamiz/basin-odasi/ziraatten-yenilikler/karekod-prim-tahsilati"),
-            */
+                         link: "https://www.ziraatbank.com.tr/tr/bankamiz/basin-odasi/ziraatten-yenilikler/karekod-prim-tahsilati", read: false),
+            
             CampaignItem(id: "2",
                          image: "kampanya",
                          link: nil),
@@ -57,7 +57,7 @@ class CampaignAPI: CampaignTracker {
                          image: "kampanya3",
                          link: nil)
         ],
-        deleted: ["1"],
+        deleted: [],
         version: "")
         
     }

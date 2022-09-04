@@ -18,9 +18,9 @@ class MainFlow {
     lazy var campaignCollectionViewModel: CampaignCollectionViewModel = {
         let versionProvider = CampaignUserDefaultsVersionProvider()
         let api = CampaignAPI(versionProvider: versionProvider)
-        let store = CampaignCoreDataStore(container: persistentContainer)
+        let store = campaignStore
         let provider = CampaignCacheRemoteSynchronizer(store: store, remote: api)
-        let viewModel = CampaignCollectionViewModel(provider: provider)
+        let viewModel = CampaignCollectionViewModel(provider: provider, store: store)
         return viewModel
     }()
     lazy var persistentContainer: NSPersistentContainer = {
@@ -49,8 +49,9 @@ class MainFlow {
         })
         return container
     }()
+    lazy var campaignStore = CampaignCoreDataStore(container: self.persistentContainer)
     lazy var languageViewModel = LanguageViewModel(languageService: languageChanger)
-    lazy var languageChanger: AppLanguageUser = AppLanguageService()
+    lazy var languageChanger: LanguageService = AppLanguageService()
     
     deinit { log_deinit(Self.self) }
     
@@ -118,9 +119,9 @@ extension MainFlow {
             startingAt: item,
             among: campaignCollectionViewModel.campaignViewModels,
             nextHandler: { [weak self] item in
-                self?.campaignCollectionViewModel.markAsRead(id: item.id)
-            }
-          //  campaignStore: store
+                self?.campaignCollectionViewModel.markAsReadIfNeeded(item)
+            },
+          campaignStore: campaignStore
         )
         carouselFlow?.cleanUp = { [weak self] in self?.carouselFlow = nil }
         carouselFlow?.start()

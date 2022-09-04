@@ -12,7 +12,7 @@ import SafariServices
 
 class CampaignCarouselSlide: UIViewController {
     var item: CampaignViewModel!
-    let duration: TimeInterval = 8.0
+    let duration: TimeInterval = 2.0
     var onTimeout: (() -> Void)?
     var onExit: (() -> Void)?
     
@@ -143,7 +143,7 @@ extension CampaignCarouselSlide {
 
 // MARK: view factory methods
 extension CampaignCarouselSlide {
-    func makeBodyImageView(imageUrl: String) -> UIImageView {
+    private func makeBodyImageView(imageUrl: String) -> UIImageView {
         let image = UIImage(named: imageUrl)
         let imageView = UIImageView(image: image)
         imageView.isUserInteractionEnabled = true

@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F7BFD85A-1EED-4AE4-8A4D-93EF26AB8BCE"
-            shouldBeEnabled = "No"
+            uuid = "787B06F9-FAB3-4D3E-BD77-29C276F30F4B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ziraat-clone/Campaigns/ViewController/CampaignCarouselViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "pageViewController(_:viewControllerBefore:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C4EC161-3C36-4A13-9A47-70B34255033A"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ziraat-clone/Campaigns/ViewModel/CampaignCollectionViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "load()"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "markAsReadIfNeeded(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

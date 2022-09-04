@@ -27,10 +27,14 @@ class CampaignCacheRemoteSynchronizer: CampaignProvider {
             case .success(let updates):
                 do {
                     try self?.store.update(with: updates.active, deleting: updates.deleted)
+                    let composed = try self?.store.getAll()
+                    completion(composed ?? [])
                 } catch {
                     print(error)
+                    completion([])
                 }
-                completion(updates.active)
+                // dehydrate with local storage
+                
             }
         }
     }
