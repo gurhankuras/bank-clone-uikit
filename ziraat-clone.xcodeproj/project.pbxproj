@@ -90,6 +90,20 @@
 		224EA7C528B946A00028A91B /* LocalizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7C428B946A00028A91B /* LocalizationViewModel.swift */; };
 		224EA7C728B94B130028A91B /* LanguageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7C628B94B130028A91B /* LanguageButton.swift */; };
 		224EA7D228B95B790028A91B /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 224EA7D128B95B790028A91B /* NSBundle+Language.m */; };
+		2252427428CBCAAA007F8C50 /* AppIconSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427328CBCAAA007F8C50 /* AppIconSwitcherTests.swift */; };
+		2252427628CBD528007F8C50 /* AppIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427528CBD528007F8C50 /* AppIconManager.swift */; };
+		2252427828CBD77C007F8C50 /* BirthdayProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427728CBD77C007F8C50 /* BirthdayProcessing.swift */; };
+		2252427A28CBDB51007F8C50 /* BirthdayAppIconProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427928CBDB51007F8C50 /* BirthdayAppIconProcessorTests.swift */; };
+		2252427C28CE0A7D007F8C50 /* BirthdayComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427B28CE0A7D007F8C50 /* BirthdayComparator.swift */; };
+		2252427E28CE0B98007F8C50 /* BirthdayComparatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427D28CE0B98007F8C50 /* BirthdayComparatorTests.swift */; };
+		2252428028CE1E6B007F8C50 /* BirthdayAppIconProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252427F28CE1E6B007F8C50 /* BirthdayAppIconProcessor.swift */; };
+		2252428228CE1EB8007F8C50 /* AppIconManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428128CE1EB8007F8C50 /* AppIconManaging.swift */; };
+		2252428428CE1ED7007F8C50 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428328CE1ED7007F8C50 /* AppIcon.swift */; };
+		2252428728CE2462007F8C50 /* AlternateIconChangerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428628CE2462007F8C50 /* AlternateIconChangerStub.swift */; };
+		2252428928CE249B007F8C50 /* AppIconManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428828CE249B007F8C50 /* AppIconManagerSpy.swift */; };
+		2252428C28CE2533007F8C50 /* from+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428B28CE2533007F8C50 /* from+Date.swift */; };
+		2252428E28CE2695007F8C50 /* fatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428D28CE2695007F8C50 /* fatalError.swift */; };
+		2252429028CE26BD007F8C50 /* XCTestCase+expectFatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252428F28CE26BD007F8C50 /* XCTestCase+expectFatalError.swift */; };
 		225822C228BA9C5500906459 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225822C128BA9C5500906459 /* CustomAlertController.swift */; };
 		225822C428BA9DF100906459 /* CustomAlertPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225822C328BA9DF100906459 /* CustomAlertPresentationController.swift */; };
 		225822C628BAB12600906459 /* UIEdgeInsets+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225822C528BAB12600906459 /* UIEdgeInsets+all.swift */; };
@@ -102,6 +116,7 @@
 		22965F7428B968E000C4ADD0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22965F7628B968E000C4ADD0 /* Localizable.strings */; };
 		22965F7928B9694200C4ADD0 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22965F7828B9694100C4ADD0 /* String+Localized.swift */; };
 		22965F7D28B96E6C00C4ADD0 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22965F7C28B96E6C00C4ADD0 /* LanguageService.swift */; };
+		22CD873B28CE6C7400FDFBB9 /* OSLog+subsystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD873A28CE6C7400FDFBB9 /* OSLog+subsystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +229,20 @@
 		224EA7D028B95B780028A91B /* ziraat-clone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ziraat-clone-Bridging-Header.h"; sourceTree = "<group>"; };
 		224EA7D128B95B790028A91B /* NSBundle+Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
 		224EA7D828B965BE0028A91B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2252427328CBCAAA007F8C50 /* AppIconSwitcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconSwitcherTests.swift; sourceTree = "<group>"; };
+		2252427528CBD528007F8C50 /* AppIconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconManager.swift; sourceTree = "<group>"; };
+		2252427728CBD77C007F8C50 /* BirthdayProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayProcessing.swift; sourceTree = "<group>"; };
+		2252427928CBDB51007F8C50 /* BirthdayAppIconProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayAppIconProcessorTests.swift; sourceTree = "<group>"; };
+		2252427B28CE0A7D007F8C50 /* BirthdayComparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayComparator.swift; sourceTree = "<group>"; };
+		2252427D28CE0B98007F8C50 /* BirthdayComparatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayComparatorTests.swift; sourceTree = "<group>"; };
+		2252427F28CE1E6B007F8C50 /* BirthdayAppIconProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayAppIconProcessor.swift; sourceTree = "<group>"; };
+		2252428128CE1EB8007F8C50 /* AppIconManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconManaging.swift; sourceTree = "<group>"; };
+		2252428328CE1ED7007F8C50 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		2252428628CE2462007F8C50 /* AlternateIconChangerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternateIconChangerStub.swift; sourceTree = "<group>"; };
+		2252428828CE249B007F8C50 /* AppIconManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconManagerSpy.swift; sourceTree = "<group>"; };
+		2252428B28CE2533007F8C50 /* from+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "from+Date.swift"; sourceTree = "<group>"; };
+		2252428D28CE2695007F8C50 /* fatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fatalError.swift; sourceTree = "<group>"; };
+		2252428F28CE26BD007F8C50 /* XCTestCase+expectFatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+expectFatalError.swift"; sourceTree = "<group>"; };
 		225822C128BA9C5500906459 /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		225822C328BA9DF100906459 /* CustomAlertPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertPresentationController.swift; sourceTree = "<group>"; };
 		225822C528BAB12600906459 /* UIEdgeInsets+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+all.swift"; sourceTree = "<group>"; };
@@ -226,6 +255,7 @@
 		22965F7728B968EE00C4ADD0 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22965F7828B9694100C4ADD0 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		22965F7C28B96E6C00C4ADD0 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
+		22CD873A28CE6C7400FDFBB9 /* OSLog+subsystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+subsystem.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +475,7 @@
 		2222F45128AF909300C1CEBD /* ziraat-cloneTests */ = {
 			isa = PBXGroup;
 			children = (
+				2252427228CBCA80007F8C50 /* Birthday */,
 				22001BE028C5386F0057D6A5 /* Flows */,
 				22001BDF28C538600057D6A5 /* Login */,
 				22001BD428C5370F0057D6A5 /* Campaign */,
@@ -452,6 +483,7 @@
 				2222F45B28AF930E00C1CEBD /* ui */,
 				2222F45928AF92BC00C1CEBD /* LandingViewControllerTests.swift */,
 				224EA7AD28B2EF780028A91B /* ViewControllerFactoryTests.swift */,
+				2252428F28CE26BD007F8C50 /* XCTestCase+expectFatalError.swift */,
 			);
 			path = "ziraat-cloneTests";
 			sourceTree = "<group>";
@@ -515,6 +547,7 @@
 		224A4B9A2892E0AE00FB4DDB /* ziraat-clone */ = {
 			isa = PBXGroup;
 			children = (
+				2252427128CBCA73007F8C50 /* Birthday */,
 				2222F45F28AF99CD00C1CEBD /* Campaigns */,
 				225822CA28BB768700906459 /* warning.json */,
 				22965F7B28B96E3400C4ADD0 /* Localization */,
@@ -610,6 +643,7 @@
 				224EA7C228B945110028A91B /* UIFont+bold.swift */,
 				22965F7828B9694100C4ADD0 /* String+Localized.swift */,
 				225822C528BAB12600906459 /* UIEdgeInsets+all.swift */,
+				22CD873A28CE6C7400FDFBB9 /* OSLog+subsystem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -624,10 +658,53 @@
 			path = objc;
 			sourceTree = "<group>";
 		};
+		2252427128CBCA73007F8C50 /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				2252427528CBD528007F8C50 /* AppIconManager.swift */,
+				2252427728CBD77C007F8C50 /* BirthdayProcessing.swift */,
+				2252427B28CE0A7D007F8C50 /* BirthdayComparator.swift */,
+				2252427F28CE1E6B007F8C50 /* BirthdayAppIconProcessor.swift */,
+				2252428128CE1EB8007F8C50 /* AppIconManaging.swift */,
+				2252428328CE1ED7007F8C50 /* AppIcon.swift */,
+			);
+			path = Birthday;
+			sourceTree = "<group>";
+		};
+		2252427228CBCA80007F8C50 /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				2252428A28CE250A007F8C50 /* Helpers */,
+				2252428528CE244B007F8C50 /* TestDoubles */,
+				2252427328CBCAAA007F8C50 /* AppIconSwitcherTests.swift */,
+				2252427928CBDB51007F8C50 /* BirthdayAppIconProcessorTests.swift */,
+				2252427D28CE0B98007F8C50 /* BirthdayComparatorTests.swift */,
+			);
+			path = Birthday;
+			sourceTree = "<group>";
+		};
+		2252428528CE244B007F8C50 /* TestDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				2252428628CE2462007F8C50 /* AlternateIconChangerStub.swift */,
+				2252428828CE249B007F8C50 /* AppIconManagerSpy.swift */,
+			);
+			path = TestDoubles;
+			sourceTree = "<group>";
+		};
+		2252428A28CE250A007F8C50 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2252428B28CE2533007F8C50 /* from+Date.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		225822C028BA9C3F00906459 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				225822D028BBA37900906459 /* Alert */,
+				2252428D28CE2695007F8C50 /* fatalError.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -791,6 +868,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2252427E28CE0B98007F8C50 /* BirthdayComparatorTests.swift in Sources */,
+				2252428C28CE2533007F8C50 /* from+Date.swift in Sources */,
 				2222F46628AFB53400C1CEBD /* LoginViewModelTests.swift in Sources */,
 				22001BD128C5369E0057D6A5 /* FakeUserDefaults.swift in Sources */,
 				224EA7AE28B2EF780028A91B /* ViewControllerFactoryTests.swift in Sources */,
@@ -804,12 +883,17 @@
 				22001BBF28C3C1120057D6A5 /* CampaignListViewControllerTests.swift in Sources */,
 				22001BA828C2116E0057D6A5 /* CampaignCoreDataStoreTests.swift in Sources */,
 				2222F45A28AF92BC00C1CEBD /* LandingViewControllerTests.swift in Sources */,
+				2252429028CE26BD007F8C50 /* XCTestCase+expectFatalError.swift in Sources */,
+				2252428728CE2462007F8C50 /* AlternateIconChangerStub.swift in Sources */,
+				2252428928CE249B007F8C50 /* AppIconManagerSpy.swift in Sources */,
 				22001BBD28C3804D0057D6A5 /* CampaignCollectionViewModelTests.swift in Sources */,
 				22001BD328C536B70057D6A5 /* LocalizationFakeUserDefaults.swift in Sources */,
 				224EA7A628B2E5130028A91B /* MainFlowTests.swift in Sources */,
 				224EA7B428B5711A0028A91B /* LoginButtonTests.swift in Sources */,
+				2252427A28CBDB51007F8C50 /* BirthdayAppIconProcessorTests.swift in Sources */,
 				22001BDA28C5375D0057D6A5 /* CampaignTrackerStub.swift in Sources */,
 				22001BB928C25C7D0057D6A5 /* CampaignCacheRemoteSynchronizerTests.swift in Sources */,
+				2252427428CBCAAA007F8C50 /* AppIconSwitcherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,10 +911,13 @@
 				224EA7C528B946A00028A91B /* LocalizationViewModel.swift in Sources */,
 				224A4BC42893FBA900FB4DDB /* CampaignListViewController.swift in Sources */,
 				224A4BBB28933AA700FB4DDB /* LoginWelcomeMessageView.swift in Sources */,
+				22CD873B28CE6C7400FDFBB9 /* OSLog+subsystem.swift in Sources */,
 				224A4BCB2895B9F700FB4DDB /* AccountHead.swift in Sources */,
 				22001BC528C51FAC0057D6A5 /* KeyValueStore.swift in Sources */,
 				225822CF28BB8A7100906459 /* ScalingFadingAnimatedTransition.swift in Sources */,
 				22001BE728C540320057D6A5 /* LoginService.swift in Sources */,
+				2252428228CE1EB8007F8C50 /* AppIconManaging.swift in Sources */,
+				2252428E28CE2695007F8C50 /* fatalError.swift in Sources */,
 				22001BA228C1FA840057D6A5 /* CampaignStore.swift in Sources */,
 				224EA7BC28B79E1C0028A91B /* LanguageSelectionViewController.swift in Sources */,
 				22965F7928B9694200C4ADD0 /* String+Localized.swift in Sources */,
@@ -844,6 +931,7 @@
 				22001B3B28BEC6610057D6A5 /* SlideToolBar.swift in Sources */,
 				22001BB328C25B6D0057D6A5 /* CampaignUpdates.swift in Sources */,
 				225822D228BBA58100906459 /* log_deinit.swift in Sources */,
+				2252427628CBD528007F8C50 /* AppIconManager.swift in Sources */,
 				22001B2728BD0F030057D6A5 /* CampaignListCell.swift in Sources */,
 				224EA7B628B63A5C0028A91B /* MyAssetsViewController.swift in Sources */,
 				22001B4128BF77F30057D6A5 /* CampaignViewModel.swift in Sources */,
@@ -852,10 +940,12 @@
 				224EA7BE28B7A6A70028A91B /* LoginPasswordFieldDelegate.swift in Sources */,
 				224A4BC02893D06700FB4DDB /* HomePageViewController.swift in Sources */,
 				22001B9B28C1F9610057D6A5 /* Data.xcdatamodeld in Sources */,
+				2252427C28CE0A7D007F8C50 /* BirthdayComparator.swift in Sources */,
 				22001B3F28BF44D10057D6A5 /* CarouselFlow.swift in Sources */,
 				224EA7B028B56E2E0028A91B /* UIButtonExtended.swift in Sources */,
 				224EA7C028B7ACD10028A91B /* LandingBottomActionBar.swift in Sources */,
 				2222F45E28AF981100C1CEBD /* LoginSheetTransitionDelegate.swift in Sources */,
+				2252428428CE1ED7007F8C50 /* AppIcon.swift in Sources */,
 				22001BC928C530150057D6A5 /* LocalizationLanguage.swift in Sources */,
 				22001B3428BE97B70057D6A5 /* MoreInfoView.swift in Sources */,
 				22001B5128BF85460057D6A5 /* CampaignViewModelProvider.swift in Sources */,
@@ -873,6 +963,7 @@
 				224A4B9C2892E0AE00FB4DDB /* AppDelegate.swift in Sources */,
 				225822C428BA9DF100906459 /* CustomAlertPresentationController.swift in Sources */,
 				22001B4F28BF85280057D6A5 /* CampaignViewModel+init.swift in Sources */,
+				2252428028CE1E6B007F8C50 /* BirthdayAppIconProcessor.swift in Sources */,
 				2275B2052897219600BAD58E /* NSDirectionalEdgeInsets+init.swift in Sources */,
 				22001B2928BD0F180057D6A5 /* CampaignItem.swift in Sources */,
 				2222F46428AF9E2E00C1CEBD /* LoginViewModel.swift in Sources */,
@@ -883,6 +974,7 @@
 				22001BE928C5404E0057D6A5 /* LoginServiceStub.swift in Sources */,
 				224A4B9E2892E0AE00FB4DDB /* SceneDelegate.swift in Sources */,
 				22001BAF28C21E200057D6A5 /* CampaignEntity+CoreDataProperties.swift in Sources */,
+				2252427828CBD77C007F8C50 /* BirthdayProcessing.swift in Sources */,
 				22001B4C28BF84F30057D6A5 /* CampaignAPI.swift in Sources */,
 				22001BBB28C3727F0057D6A5 /* PersistentContainerFactory.swift in Sources */,
 				224EA7C728B94B130028A91B /* LanguageButton.swift in Sources */,
@@ -959,6 +1051,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-Birthday";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1006,7 +1100,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1020,6 +1114,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-Birthday";
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1061,7 +1157,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

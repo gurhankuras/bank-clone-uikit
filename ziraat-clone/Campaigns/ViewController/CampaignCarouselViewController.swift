@@ -7,15 +7,16 @@
 
 import UIKit
 import OSLog
+import os.log
 
 class CampaignCarouselViewController: UIPageViewController {
-    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
-                                       category: String(describing: "CampaignCarouselViewController"))
+    // private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
+      //                                 category: String(describing: "CampaignCarouselViewController"))
     var onExit: (() -> Void)?
     var onNext: ((CampaignViewModel) -> Void)?
     var pageIndex = 0 {
         didSet {
-            print(pageIndex)
+            os_log("Page changed to index %i", log: OSLog.view, type: .debug, pageIndex)
         }
     }
     var durationPerSlide: TimeInterval = 8
@@ -88,7 +89,6 @@ extension CampaignCarouselViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        Self.logger.debug("\(#function)")
         guard let currentItem = campaignItem(for: viewController),
               let currentIndex = items.firstIndex(of: currentItem) else { return nil }
         pageIndex = currentIndex
@@ -113,10 +113,6 @@ extension CampaignCarouselViewController: UIPageViewControllerDataSource {
 }
 
 extension CampaignCarouselViewController: UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            willTransitionTo pendingViewControllers: [UIViewController]) {
-        print("willTransitionTo")
-    }
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
                             previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 
@@ -125,14 +121,5 @@ extension CampaignCarouselViewController: UIPageViewControllerDelegate {
               let currentIndex = items.firstIndex(of: item) else { return }
         guard completed else { return }
         pageIndex = currentIndex
-        
-        /*
-        previousViewControllers
-            .compactMap({ $0 as? CampaignPageViewControllerSlide })
-            .filter({ $0.item.image != (pages[currentIndex] as! CampaignPageViewControllerSlide).item.image})
-            .forEach { slide in
-                slide.reset()
-            }
-        */
     }
 }

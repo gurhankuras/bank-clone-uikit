@@ -12,6 +12,7 @@ struct AccountHolder {
     let firstName: String
     let middleName: String?
     let surname: String
+    let birthDate: Date
 
     var fullName: String {
         if let middleName = middleName {
@@ -23,7 +24,7 @@ struct AccountHolder {
 
 extension AccountHolder {
     static var stub: AccountHolder {
-        AccountHolder(identityNumber: "21484486692", firstName: "Tevfik", middleName: "Gurhan", surname: "Kuraş")
+        AccountHolder(identityNumber: "21484486692", firstName: "Tevfik", middleName: "Gurhan", surname: "Kuraş", birthDate: Date())
     }
 }
 /*

@@ -49,7 +49,6 @@ class CustomSizedPresentationController: UIPresentationController {
         coordinator.animate(alongsideTransition: { [weak self] _ in
             self?.dimmedView.layer.opacity = 0.5
         })
-        print("willbegin")
     }
 
     override func dismissalTransitionWillBegin() {

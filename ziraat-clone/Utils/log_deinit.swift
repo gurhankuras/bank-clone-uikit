@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import OSLog
+import os.log
 
 func log_deinit<T>(_ type: T.Type) {
-    print(String(describing: T.self), "deinit")
-
-    // print(String(reflecting: T.self).split(separator: ".").last!, "deinit")
+    os_log("%@ was deinitialized", log: .deinit, type: .debug, String(describing: T.self))
 }

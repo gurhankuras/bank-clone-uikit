@@ -12,9 +12,6 @@ import OSLog
 // .centeredRectOfSize(.init(width: max(300, frame.size.width), height: frame.size.height))
 
 class CustomAlertPresentationController: UIPresentationController {
-    private static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!,
-                                       category: String(describing: "CustomAlertPresentationController"))
-
     var dimmedView: UIView!
 
     func getDimmedView() -> UIView {

@@ -42,12 +42,12 @@ class CampaignAPI: CampaignTracker {
     }
     
     var updates: CampaignUpdates {
-        return
-        CampaignUpdates(active: [
+        return CampaignUpdates(active: [
            
             CampaignItem(id: "1",
                          image: "kampanya2",
-                         link: "https://www.ziraatbank.com.tr/tr/bankamiz/basin-odasi/ziraatten-yenilikler/karekod-prim-tahsilati", read: false),
+                         link: "https://www.ziraatbank.com.tr/tr/bankamiz/basin-odasi/ziraatten-yenilikler/karekod-prim-tahsilati",
+                         read: false),
             
             CampaignItem(id: "2",
                          image: "kampanya",

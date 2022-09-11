@@ -70,5 +70,3 @@ extension AppLanguageServiceTests {
         XCTAssertEqual(sut.currentLanguage, .en)
     }
 }
-
-

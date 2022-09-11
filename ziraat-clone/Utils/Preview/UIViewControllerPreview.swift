@@ -23,8 +23,6 @@ struct UIViewControllerPreview<ViewController: UIViewController>: UIViewControll
         viewController = builder()
     }
     
-   
-    
     func updateUIViewController(_ uiViewController: ViewController, context: Context) {
         return
     }

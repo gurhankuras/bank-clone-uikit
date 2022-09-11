@@ -17,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow()
         
-        
         window?.windowScene = windowScene
 
         let navigationController = UINavigationController()
@@ -32,6 +31,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
+
+    var visualEffectView = UIVisualEffectView()
+
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        print(#function)
+        visualEffectView.removeFromSuperview()
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        print(#function)
+        
+    }
+    
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        print(#function)
+        guard let window = window else { return }
+
+        if !self.visualEffectView.isDescendant(of: window) {
+            let blurEffect = UIBlurEffect(style: .systemThinMaterial)
+            self.visualEffectView = UIVisualEffectView(effect: blurEffect)
+            self.visualEffectView.frame = (self.window?.bounds)!
+            self.window?.addSubview(self.visualEffectView)
+        }
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        print(#function)
+        self.visualEffectView.removeFromSuperview()
+    }
+    
+    /*
+    override func sceneWillResignActive(_ application: UIApplication) {
+        guard let window = window else {
+            return
+        }
+
+    if !self.visualEffectView.isDescendant(of: window) {
+        let blurEffect = UIBlurEffect(style: .light)
+        self.visualEffectView = UIVisualEffectView(effect: blurEffect)
+        self.visualEffectView.frame = (self.window?.bounds)!
+        self.window?.addSubview(self.visualEffectView)
+       }
+    }
+    override func sceneDidBecomeActive(_ application: UIApplication) {
+        self.visualEffectView.removeFromSuperview()
+    }
+     */
 
 }
 

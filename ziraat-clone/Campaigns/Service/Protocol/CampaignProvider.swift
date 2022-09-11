@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol CampaignProvider {
     func campaigns(completion: @escaping ([CampaignItem]) -> Void)
 }

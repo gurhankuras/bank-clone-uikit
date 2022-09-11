@@ -83,4 +83,3 @@ extension CampaignCollectionViewModelTests {
         XCTAssertEqual(sut.campaignViewModels.map(\.id), stubs.map(\.id))
     }
 }
-

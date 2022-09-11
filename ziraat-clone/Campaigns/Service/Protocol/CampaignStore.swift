@@ -93,37 +93,7 @@ class CampaignCoreDataStore: CampaignStore {
             let insertRequest = NSBatchInsertRequest(entity: CampaignEntity.entity(), objects: dicts)
             try context.execute(insertRequest)
         }
-        
-        
-        
-        /*
-        var idMap: Dictionary<String, [String: Any]> = [:]
-        dicts.forEach { map in
-            guard let id = map["id"] as? String else {
-                return
-            }
-            idMap[id] = map
-        }
-        
-        try context.performAndWait {
-            let fetchRequest = CampaignEntity.fetchRequest()
-            // fetchRequest.propertiesToFetch = ["read", "id"]
-            let campaigns = try context.fetch(fetchRequest)
-            for campaign in campaigns {
-                guard let id = campaign.id,
-                      var item = idMap[id] else { continue }
-                item["read"] = campaign.read
-                idMap[id] = item
-                print("\(campaign.id): \(campaign.read)")
-            }
-            
-            let insertRequest = NSBatchInsertRequest(entity: CampaignEntity.entity(), objects: idMap.values.map({ $0 }))
-            try context.execute(insertRequest)
-        }
-         */
     }
-    
-  
     
     func getAll() throws -> [CampaignItem] {
         return try context.performAndWait {

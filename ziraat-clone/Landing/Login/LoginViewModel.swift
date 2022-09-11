@@ -52,7 +52,7 @@ class LoginViewModel {
 
     private func handleAutoLogin() {
         if isFirstAttempt && self.password.isValid {
-            let account = AccountHolder(identityNumber: "12345667", firstName: "Tevfik", middleName: "Gurhan", surname: "Kuras")
+            let account = AccountHolder.stub
             attempLogin(with: account) { [weak self] in
                 self?.onAutoLoginAttempt?($0)
                 self?.isFirstAttempt = false
@@ -65,7 +65,7 @@ class LoginViewModel {
     }
 
     func attempLogin() {
-        let account = AccountHolder(identityNumber: "12345667", firstName: "Tevfik", middleName: "Gurhan", surname: "Kuras")
+        let account = AccountHolder.stub
         attempLogin(with: account, completion: { [weak self] in self?.onSubmitted?($0) })
     }
 

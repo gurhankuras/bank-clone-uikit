@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension CampaignEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CampaignEntity> {
@@ -23,6 +22,6 @@ extension CampaignEntity {
 
 }
 
-extension CampaignEntity : Identifiable {
+extension CampaignEntity: Identifiable {
 
 }

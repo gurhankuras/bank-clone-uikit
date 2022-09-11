@@ -97,7 +97,6 @@ class SlideToolBar: UIView {
         onClose?()
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -191,7 +190,7 @@ struct SlideToolBar_Preview: PreviewProvider {
         }
         .previewLayout(.sizeThatFits)
         .frame(width: 350, height: 60, alignment: .leading)
-        .ignoresSafeArea()
+        // .ignoresSafeArea()
     }
 }
 #endif

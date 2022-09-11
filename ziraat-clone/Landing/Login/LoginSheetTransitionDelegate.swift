@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import os.log
 
 class LoginSheetTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
     var onClose: (() -> Void)?
+    
 
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
@@ -24,6 +26,7 @@ class LoginSheetTransitionDelegate: NSObject, UIViewControllerTransitioningDeleg
         guard presented is HomePageViewController else {
             return nil
         }
+    
         return MoveUpPageTransition(movement: .up, duration: 2.0)
     }
 

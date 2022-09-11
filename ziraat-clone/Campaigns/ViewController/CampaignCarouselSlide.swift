@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 import SafariServices
+import os.log
 
 class CampaignCarouselSlide: UIViewController {
     var item: CampaignViewModel!
@@ -95,7 +96,7 @@ class CampaignCarouselSlide: UIViewController {
         if let v = moreInfoLabel, !v.isRunning {
             v.startMoving()
         }
-        print("viewDidAppear")
+        os_log("Carousel slide %@ appeared", log: .view, type: .debug, item.id)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -104,7 +105,6 @@ class CampaignCarouselSlide: UIViewController {
     }
     
     @objc func finish() {
-        print("finish")
         onExit?()
     }
 }
@@ -118,7 +118,7 @@ extension CampaignCarouselSlide {
             let delta = p.translation(in: v.superview)
             let degree = revisedDegree(delta: delta, by: 90)
             let activeDegreeRange: ClosedRange<CGFloat> = (-30...30)
-            print("degree: \(degree)")
+            os_log("degree: %f", log: .view, type: .debug, degree)
 
             if item.hasLink && activeDegreeRange.contains(degree) && !browserOpen {
                 browserOpen = true
@@ -190,7 +190,7 @@ struct CampaignPageViewControllerSlide_Preview: PreviewProvider {
             let vc = CampaignCarouselSlide(item: vm, duration: 2, onTimeout: {})
             return vc
         }
-        .ignoresSafeArea()
+        // .ignoresSafeArea()
     }
 }
 #endif

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import CoreData
+import os.log
+
 
 class MainFlow {
     var navigationController: UINavigationController
@@ -23,27 +25,11 @@ class MainFlow {
         let viewModel = CampaignCollectionViewModel(provider: provider, store: store)
         return viewModel
     }()
+    
     lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
         let container = NSPersistentContainer(name: "Data")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -52,14 +38,22 @@ class MainFlow {
     lazy var campaignStore = CampaignCoreDataStore(container: self.persistentContainer)
     lazy var languageViewModel = LocalizationViewModel(languageService: languageChanger)
     lazy var languageChanger: LocalizationService = LanguageService(keyValueStore: UserDefaults.standard)
+    lazy var birthdayProcessor: BirthdayAppIconProcessor = {
+        let manager = AppIconManager(changer: UIApplication.shared, keyValueStore: UserDefaults.standard)
+        let processor = BirthdayAppIconProcessor(iconManager: manager,
+                                                 comparator: BirthdayComparator.compare,
+                                                 timeProvider: { Date() })
+        return processor
+    }()
     
     deinit { log_deinit(Self.self) }
     
     init(navigationViewController: UINavigationController) {
         self.navigationController = navigationViewController
     }
-
+    
     func start() {
+        os_log("Starting main flow...", log: OSLog.flow, type: .debug)
         languageChanger.applyCurrent()
         showLanding()
     }
@@ -73,6 +67,7 @@ class MainFlow {
     private func rootViewController(in language: LocalizationLanguage) -> UIViewController {
         let loginCallback: () -> Void = { [weak self] in self?.showLoginSheet() }
         let languageCallback: () -> Void = { [weak self] in self?.presentLanguageSelectionSheet() }
+    
                 
         let compaingsViewController = Factory.makeCampaignsViewController(viewModel: campaignCollectionViewModel,
         onCampaignSelected: { [weak self] item in
@@ -82,6 +77,10 @@ class MainFlow {
         let vc = Factory.makeLandingViewController(language: language, loginButtonPressed: loginCallback,
                                                    onLanguagePressed: languageCallback,
                                                    campaignsViewController: compaingsViewController)
+        vc.processBirthday = { [weak self] in
+            
+            self?.birthdayProcessor.process(birthdayOf: .stub)
+        }
         return vc
     }
 
@@ -91,7 +90,6 @@ class MainFlow {
     }
 
 }
-
 
 // MARK: Login
 extension MainFlow {
@@ -113,7 +111,7 @@ extension MainFlow {
 // MARK: Flows
 extension MainFlow {
     func startCarouselFlow(startingAt item: CampaignViewModel) {
-        //let store = CampaignCoreDataStore(container: persistentContainer)
+        // let store = CampaignCoreDataStore(container: persistentContainer)
         carouselFlow = CarouselFlow(
             navigationController,
             startingAt: item,

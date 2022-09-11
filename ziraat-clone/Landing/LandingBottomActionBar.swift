@@ -7,13 +7,16 @@
 
 import Foundation
 import UIKit
+import os.log
 
 class LandingBottomActionBar: UIView {
     let actions: [ActionItem] = [
-        .init(systemImage: "qrcode", title: L10n.qr_operation.localized, handle: { action in print(action.title) }),
+        .init(systemImage: "qrcode", title: L10n.qr_operation.localized, handle: { action in
+            os_log("Pressed %@", log: .view, type: .debug, action.title)
+        }),
         .init(systemImage: "arrow.left.arrow.right",
               title: L10n.easy_transfer.localized,
-              handle: { action in print(action.title) }),
+              handle: { action in os_log("Pressed %@", log: .view, type: .debug, action.title) }),
         .init(systemImage: "chart.bar.xaxis", title: L10n.financial_data.localized, handle: {_ in}),
         .init(systemImage: "checkmark.circle.fill", title: L10n.ziraat_approval.localized, handle: {_ in}),
         .init(systemImage: "square.grid.2x2.fill", title: L10n.other_transactions.localized, handle: {_ in})
@@ -131,7 +134,6 @@ extension LandingBottomActionBar {
 
         @objc private func handleAction() {
             self.action.handle(action)
-            print("handle action")
         }
     }
 }

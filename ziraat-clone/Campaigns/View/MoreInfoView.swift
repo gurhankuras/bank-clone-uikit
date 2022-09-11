@@ -29,7 +29,6 @@ class MoreInfoView: UIView {
     }
     
       func startMoving() {
-          print("animate")
           isRunning = true
           let options: UIView.AnimationOptions = [.curveEaseInOut, .autoreverse, .repeat]
           UIView.animate(withDuration: 1.4, delay: 0.1, options: options,

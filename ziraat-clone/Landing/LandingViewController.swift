@@ -13,6 +13,7 @@ class LandingViewController: UIViewController {
     var language: LocalizationLanguage!
     var onLoginPressed: (() -> Void)?
     var onLanguagePressed: (() -> Void)?
+    var processBirthday: (() -> Void)?
     var accountHolder: AccountHolder?
 
     var overlayLayer: CALayer?
@@ -67,7 +68,6 @@ class LandingViewController: UIViewController {
         return loginButton
     }()
     
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if overlayLayer == nil {
@@ -83,6 +83,14 @@ class LandingViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         configureLayout()
+    }
+    
+    let oneTimeExecuter = OneTimeExecuter()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        oneTimeExecuter.execute { [weak self] in
+            self?.processBirthday?()
+        }
     }
 
     @objc func doSomething() {
@@ -103,6 +111,16 @@ class LandingViewController: UIViewController {
     }
 }
 
+class OneTimeExecuter {
+    private var executed: Bool = false
+    
+    func execute(execution: @escaping () -> Void) {
+        defer { executed = true }
+        if !executed {
+            execution()
+        }
+    }
+}
 
 // MARK: NavigationBar
 extension LandingViewController {
@@ -112,9 +130,14 @@ extension LandingViewController {
         leftNavButton.tintColor = .white
         navigationItem.leftBarButtonItem = leftNavButton
 
-        let rightNavButton = UIBarButtonItem(image: UIImage(systemName: "bell.fill"), style: .done, target: self, action: nil)
+        let rightNavButton = UIBarButtonItem(image: UIImage(systemName: "bell.fill"), style: .done, target: self, action: #selector(changeIcon))
         rightNavButton.tintColor = .white
         navigationItem.rightBarButtonItem = rightNavButton
+    }
+    
+    @objc private func changeIcon() {
+        let iconSwitcher = AppIconManager(changer: UIApplication.shared, keyValueStore: UserDefaults.standard)
+        iconSwitcher.switch(to: .birthday, completion: { print($0) })
     }
 }
 

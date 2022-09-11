@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import os.log
 
 class UserAvatar: UIView {
     var cornerRadius: CGFloat = 0
@@ -85,7 +86,7 @@ class UserAvatar: UIView {
                                                 bigCircleView.frame.height * Self.circleRatio) / 2
         }
 
-        print("layout")
+        os_log("User avatar %s", log: .view, #function)
     }
 
     required init?(coder: NSCoder) {

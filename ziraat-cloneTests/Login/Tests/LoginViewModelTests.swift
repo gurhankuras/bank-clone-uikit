@@ -98,5 +98,3 @@ private extension LoginViewModel.Result {
         }
     }
 }
-
-

@@ -18,7 +18,7 @@ class CampaignCacheRemoteSynchronizer: CampaignProvider {
     func campaigns(completion: @escaping ([CampaignItem]) -> Void) {
         remote.campaigns { [weak self] result in
             switch result {
-            case .failure(let error):
+            case .failure:
                 guard let cachedItems = try? self?.store.getAll() else {
                     completion([])
                     return

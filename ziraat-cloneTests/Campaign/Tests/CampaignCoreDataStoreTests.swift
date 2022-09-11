@@ -92,7 +92,6 @@ class CampaignCoreDataStoreTests: XCTestCase {
     }
 
     func compare(lhs: CampaignItem, rhs: CampaignItem) -> Bool { return lhs.id < rhs.id }
-
     
     func test_mergingJustAddsItemsInParameter_whenStoreIsEmpty() throws {
         let sut = try makeSut()

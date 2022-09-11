@@ -39,7 +39,8 @@ class LanguageService: LocalizationService {
     
     private func languageOrFail(for rawValue: LocalizationLanguage.RawValue) -> LocalizationLanguage {
         guard let language = LocalizationLanguage(rawValue: rawValue) else {
-            fatalError("Unsupported language. This is a development bug")
+            // fatalError("Unsupported language. This is a development bug")
+            return LocalizationLanguage.en
         }
         return language
     }
